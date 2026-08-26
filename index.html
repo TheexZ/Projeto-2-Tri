@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -7,9 +6,8 @@
     <meta name="description" content="Projeto Integrador IFA - A Física e o Mundo">
     <meta name="author" content="Projeto Integrador IFA">
     <meta name="theme-color" content="#0066cc">
-    <title>Projeto Integrador IFA - A Física e o Mundo</title>
 
-    <link rel="stylesheet" href="style.css">
+    <title>Projeto Integrador IFA - A Física e o Mundo</title>
 
     <script>
         MathJax = {
@@ -73,6 +71,7 @@
             --card: #17212b;
             --border: #33404d;
             --shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+
             background:
                 radial-gradient(circle at top right, #173c59, transparent 35%),
                 var(--background);
@@ -229,7 +228,12 @@
         .progress-bar {
             height: 100%;
             width: 0;
-            background: linear-gradient(90deg, #00c853, #00a8ff, #0066cc);
+            background: linear-gradient(
+                90deg,
+                #00c853,
+                #00a8ff,
+                #0066cc
+            );
             transition: width 0.1s linear;
         }
 
@@ -265,7 +269,11 @@
         }
 
         .tab-btn.active {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(
+                135deg,
+                var(--primary),
+                var(--secondary)
+            );
             color: #ffffff;
             border-color: var(--primary);
             box-shadow: 0 5px 14px rgba(0,102,204,0.3);
@@ -285,6 +293,7 @@
                 opacity: 0;
                 transform: translateY(12px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -301,6 +310,10 @@
 
         .highlight-card {
             border-top: 5px solid var(--secondary);
+        }
+
+        .fiber-card {
+            border-top: 5px solid #00c853;
         }
 
         .card h2 {
@@ -358,8 +371,17 @@
             background: rgba(0, 102, 204, 0.08);
         }
 
+        .fiber-callout {
+            border-left-color: #00c853;
+            background: rgba(0, 200, 83, 0.08);
+        }
+
         .dark-mode .callout {
             background: rgba(0, 168, 255, 0.08);
+        }
+
+        .dark-mode .fiber-callout {
+            background: rgba(0, 200, 83, 0.08);
         }
 
         .custom-list {
@@ -404,7 +426,10 @@
 
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(220px, 1fr)
+            );
             gap: 18px;
             margin: 25px 0;
         }
@@ -445,6 +470,108 @@
             color: #fff;
             text-align: center;
             font-size: 1.2rem;
+        }
+
+        .fiber-diagram {
+            margin: 30px 0;
+            padding: 25px;
+            border-radius: 15px;
+            background:
+                linear-gradient(
+                    135deg,
+                    #071c2c,
+                    #0b3954,
+                    #071c2c
+                );
+            color: white;
+            overflow-x: auto;
+        }
+
+        .fiber-visual {
+            min-width: 600px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .fiber-cable {
+            position: relative;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fiber-cladding {
+            width: 90%;
+            height: 90px;
+            border-radius: 45px;
+            background: #d9e5ed;
+            border: 8px solid #aabccc;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fiber-core {
+            position: absolute;
+            left: 2%;
+            right: 2%;
+            top: 25px;
+            height: 32px;
+            border-radius: 20px;
+            background: linear-gradient(
+                180deg,
+                #51e8ff,
+                #00a8ff,
+                #0066cc
+            );
+            overflow: hidden;
+        }
+
+        .light-ray {
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 100%;
+            height: 8px;
+            background: #fff700;
+            box-shadow:
+                0 0 10px #fff700,
+                0 0 20px #fff700;
+            clip-path: polygon(
+                0 0,
+                8% 100%,
+                16% 0,
+                24% 100%,
+                32% 0,
+                40% 100%,
+                48% 0,
+                56% 100%,
+                64% 0,
+                72% 100%,
+                80% 0,
+                88% 100%,
+                96% 0,
+                100% 100%,
+                100% 0
+            );
+        }
+
+        .diagram-labels {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .diagram-label {
+            padding: 12px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .diagram-label strong {
+            color: #65eaff;
         }
 
         .tab-navigation-footer {
@@ -657,10 +784,13 @@
 
     <header class="main-header">
         <h1>A Física Projeta Tudo o Que Você Vê</h1>
+
         <p class="subtitle">
-            Descubra a ciência por trás das cores, das imagens, do olho humano,
-            da mecânica clássica, da termodinâmica e da tecnologia do esporte.
+            Descubra a ciência por trás das cores, das imagens,
+            do olho humano, da reflexão, da fibra óptica
+            e da tecnologia do esporte.
         </p>
+
         <span class="header-badge">
             Projeto Integrador IFA • Física e Tecnologia
         </span>
@@ -669,8 +799,10 @@
     <main class="container">
 
         <section class="tools-bar" aria-label="Ferramentas do projeto">
+
             <div class="search-box">
                 <span class="search-icon">🔎</span>
+
                 <input
                     type="search"
                     id="searchInput"
@@ -679,6 +811,7 @@
             </div>
 
             <div class="tool-buttons">
+
                 <button
                     class="tool-btn"
                     id="themeButton"
@@ -692,7 +825,9 @@
                     onclick="window.print()">
                     🖨️ Imprimir
                 </button>
+
             </div>
+
         </section>
 
         <div
@@ -701,7 +836,14 @@
             role="status">
         </div>
 
-        <nav class="tabs-nav" role="tablist" aria-label="Conteúdos de Física">
+        <!-- ============================= -->
+        <!-- ABAS -->
+        <!-- ============================= -->
+
+        <nav
+            class="tabs-nav"
+            role="tablist"
+            aria-label="Conteúdos de Física">
 
             <button
                 class="tab-btn active"
@@ -757,43 +899,17 @@
                 class="tab-btn"
                 role="tab"
                 aria-selected="false"
-                aria-controls="tab-newton"
+                aria-controls="tab-fibra"
                 tabindex="-1"
-                onclick="openTab(event, 'tab-newton')">
-                Leis de Newton
-            </button>
-
-            <button
-                class="tab-btn"
-                role="tab"
-                aria-selected="false"
-                aria-controls="tab-colisoes"
-                tabindex="-1"
-                onclick="openTab(event, 'tab-colisoes')">
-                Colisões
-            </button>
-
-            <button
-                class="tab-btn"
-                role="tab"
-                aria-selected="false"
-                aria-controls="tab-trabalho"
-                tabindex="-1"
-                onclick="openTab(event, 'tab-trabalho')">
-                Trabalho e Energia
-            </button>
-
-            <button
-                class="tab-btn"
-                role="tab"
-                aria-selected="false"
-                aria-controls="tab-termo"
-                tabindex="-1"
-                onclick="openTab(event, 'tab-termo')">
-                Termodinâmica
+                onclick="openTab(event, 'tab-fibra')">
+                Fibra Óptica
             </button>
 
         </nav>
+
+        <!-- ============================= -->
+        <!-- FORMAÇÃO DE IMAGENS -->
+        <!-- ============================= -->
 
         <section
             id="tab-imagens"
@@ -804,9 +920,9 @@
             <h2>Formação de Imagens</h2>
 
             <p>
-                A formação de imagens é o processo pelo qual a luz, ao interagir
-                com objetos e meios ópticos, organiza-se para criar uma
-                representação visual daquilo que nos cerca.
+                A formação de imagens é o processo pelo qual a luz,
+                ao interagir com objetos e meios ópticos, organiza-se
+                para criar uma representação visual daquilo que nos cerca.
             </p>
 
             <p>
@@ -823,12 +939,13 @@
             </div>
 
             <div class="info-grid">
+
                 <article class="info-box">
                     <div class="icon">📷</div>
                     <h4>Câmeras</h4>
                     <p>
-                        Utilizam lentes para formar imagens reais sobre um
-                        sensor fotossensível.
+                        Utilizam lentes para formar imagens reais
+                        sobre um sensor fotossensível.
                     </p>
                 </article>
 
@@ -836,8 +953,8 @@
                     <div class="icon">🎥</div>
                     <h4>Projetores</h4>
                     <p>
-                        Utilizam sistemas ópticos para ampliar e projetar
-                        imagens sobre uma superfície.
+                        Utilizam sistemas ópticos para ampliar
+                        e projetar imagens sobre uma superfície.
                     </p>
                 </article>
 
@@ -845,13 +962,15 @@
                     <div class="icon">🔍</div>
                     <h4>Lupas</h4>
                     <p>
-                        Produzem imagens virtuais ampliadas quando o objeto
-                        está dentro da distância focal.
+                        Produzem imagens virtuais ampliadas quando
+                        o objeto está dentro da distância focal.
                     </p>
                 </article>
+
             </div>
 
             <div class="callout">
+
                 <p>
                     <strong>Imagens Reais:</strong>
                     são formadas pelo cruzamento efetivo dos raios de luz.
@@ -863,13 +982,14 @@
                     surgem do prolongamento aparente dos raios luminosos.
                     Não podem ser projetadas diretamente sobre uma tela.
                 </p>
+
             </div>
 
             <h3>Equação de Gauss</h3>
 
             <p>
-                A posição das imagens formadas por lentes delgadas e espelhos
-                esféricos pode ser determinada pela relação:
+                A posição das imagens formadas por lentes delgadas
+                e espelhos esféricos pode ser determinada pela relação:
             </p>
 
             <div class="formula-box">
@@ -884,11 +1004,12 @@
 
             <div class="callout">
                 <strong>Aplicação:</strong>
-                essa relação permite determinar matematicamente onde a imagem
-                será formada em diferentes sistemas ópticos.
+                essa relação permite determinar matematicamente onde
+                a imagem será formada em diferentes sistemas ópticos.
             </div>
 
             <div class="tab-navigation-footer">
+
                 <button
                     class="nav-card-btn"
                     disabled>
@@ -900,8 +1021,14 @@
                     onclick="switchTabByIndex(1)">
                     Próximo: Luz e Cores →
                 </button>
+
             </div>
+
         </section>
+
+        <!-- ============================= -->
+        <!-- LUZ E CORES -->
+        <!-- ============================= -->
 
         <section
             id="tab-cores"
@@ -918,10 +1045,11 @@
             </p>
 
             <ul class="custom-list">
+
                 <li>
                     <strong>Maçã vermelha:</strong>
-                    reflete principalmente as frequências associadas ao
-                    vermelho e absorve grande parte das demais.
+                    reflete principalmente as frequências associadas
+                    ao vermelho e absorve grande parte das demais.
                 </li>
 
                 <li>
@@ -933,6 +1061,7 @@
                     <strong>Objeto preto:</strong>
                     absorve grande parte da radiação visível incidente.
                 </li>
+
             </ul>
 
             <h3>Síntese Aditiva</h3>
@@ -944,10 +1073,13 @@
             </p>
 
             <div class="info-grid">
+
                 <article class="info-box">
                     <div class="icon">🔴</div>
                     <h4>Vermelho</h4>
-                    <p>Um dos componentes fundamentais do sistema RGB.</p>
+                    <p>
+                        Um dos componentes fundamentais do sistema RGB.
+                    </p>
                 </article>
 
                 <article class="info-box">
@@ -965,6 +1097,7 @@
                         Completa o sistema RGB utilizado em dispositivos.
                     </p>
                 </article>
+
             </div>
 
             <h3>Síntese Subtrativa</h3>
@@ -988,6 +1121,7 @@
             </div>
 
             <div class="tab-navigation-footer">
+
                 <button
                     class="nav-card-btn"
                     onclick="switchTabByIndex(0)">
@@ -999,8 +1133,14 @@
                     onclick="switchTabByIndex(2)">
                     Próximo: Espelhos →
                 </button>
+
             </div>
+
         </section>
+
+        <!-- ============================= -->
+        <!-- ESPELHOS -->
+        <!-- ============================= -->
 
         <section
             id="tab-espelhos"
@@ -1015,8 +1155,8 @@
             </p>
 
             <p>
-                A reflexão acontece quando a luz atinge uma superfície e
-                retorna ao meio de origem.
+                A reflexão acontece quando a luz atinge uma superfície
+                e retorna ao meio de origem.
             </p>
 
             <p>
@@ -1033,7 +1173,9 @@
             </p>
 
             <div class="table-container">
+
                 <table>
+
                     <thead>
                         <tr>
                             <th>Tipo</th>
@@ -1043,6 +1185,7 @@
                     </thead>
 
                     <tbody>
+
                         <tr>
                             <td><strong>Plano</strong></td>
                             <td>
@@ -1067,8 +1210,11 @@
                             </td>
                             <td>Retrovisores e vigilância.</td>
                         </tr>
+
                     </tbody>
+
                 </table>
+
             </div>
 
             <div class="image-wrapper">
@@ -1079,6 +1225,7 @@
             </div>
 
             <div class="info-grid">
+
                 <article class="info-box">
                     <div class="icon">🪞</div>
                     <h4>Espelho plano</h4>
@@ -1102,9 +1249,11 @@
                         Amplia o campo de visão.
                     </p>
                 </article>
+
             </div>
 
             <div class="tab-navigation-footer">
+
                 <button
                     class="nav-card-btn"
                     onclick="switchTabByIndex(1)">
@@ -1116,8 +1265,14 @@
                     onclick="switchTabByIndex(3)">
                     Próximo: Óptica do Olho →
                 </button>
+
             </div>
+
         </section>
+
+        <!-- ============================= -->
+        <!-- OLHO HUMANO -->
+        <!-- ============================= -->
 
         <section
             id="tab-olho"
@@ -1132,11 +1287,12 @@
             </p>
 
             <p>
-                O olho humano é um sistema óptico complexo responsável pela
-                formação e interpretação de imagens.
+                O olho humano é um sistema óptico complexo responsável
+                pela formação e interpretação de imagens.
             </p>
 
             <ul class="custom-list">
+
                 <li>
                     <strong>Córnea:</strong>
                     possui importante poder de convergência óptica.
@@ -1161,6 +1317,7 @@
                     <strong>Nervo óptico:</strong>
                     transmite informações visuais ao cérebro.
                 </li>
+
             </ul>
 
             <h3>Ametropias e Correções</h3>
@@ -1173,7 +1330,9 @@
             </div>
 
             <div class="table-container">
+
                 <table>
+
                     <thead>
                         <tr>
                             <th>Condição</th>
@@ -1183,6 +1342,7 @@
                     </thead>
 
                     <tbody>
+
                         <tr>
                             <td><strong>Miopia</strong></td>
                             <td>Antes da retina.</td>
@@ -1206,17 +1366,21 @@
                             <td>Dificuldade de acomodação.</td>
                             <td>Lentes corretivas.</td>
                         </tr>
+
                     </tbody>
+
                 </table>
+
             </div>
 
             <div class="callout">
                 <strong>Acomodação visual:</strong>
-                é a capacidade do sistema óptico ocular de alterar sua potência
-                para focalizar objetos em diferentes distâncias.
+                é a capacidade do sistema óptico ocular de alterar
+                sua potência para focalizar objetos em diferentes distâncias.
             </div>
 
             <div class="tab-navigation-footer">
+
                 <button
                     class="nav-card-btn"
                     onclick="switchTabByIndex(2)">
@@ -1228,8 +1392,14 @@
                     onclick="switchTabByIndex(4)">
                     Próximo: Trionda →
                 </button>
+
             </div>
+
         </section>
+
+        <!-- ============================= -->
+        <!-- TRIONDA -->
+        <!-- ============================= -->
 
         <section
             id="tab-trionda"
@@ -1255,9 +1425,10 @@
             <h3>Efeito Magnus</h3>
 
             <p>
-                Quando uma bola gira enquanto se desloca pelo ar, a diferença
-                de velocidades do escoamento ao redor de sua superfície pode
-                produzir uma força lateral conhecida como efeito Magnus.
+                Quando uma bola gira enquanto se desloca pelo ar,
+                a diferença de velocidades do escoamento ao redor
+                de sua superfície pode produzir uma força lateral
+                conhecida como efeito Magnus.
             </p>
 
             <div class="formula-box">
@@ -1265,19 +1436,21 @@
             </div>
 
             <p>
-                De forma simplificada, a intensidade do efeito depende da
-                rotação da bola e da velocidade de seu deslocamento, entre
-                outros fatores.
+                De forma simplificada, a intensidade do efeito depende
+                da rotação da bola e da velocidade de seu deslocamento,
+                entre outros fatores.
             </p>
 
             <h3>Tecnologia Conectada</h3>
 
             <p>
-                Bolas esportivas modernas podem incorporar sensores e sistemas
-                de monitoramento capazes de registrar dados de movimento.
+                Bolas esportivas modernas podem incorporar sensores
+                e sistemas de monitoramento capazes de registrar
+                dados de movimento.
             </p>
 
             <div class="info-grid">
+
                 <article class="info-box">
                     <div class="icon">⚽</div>
                     <h4>Movimento</h4>
@@ -1301,6 +1474,7 @@
                         A análise permite estudar o comportamento da bola.
                     </p>
                 </article>
+
             </div>
 
             <h3>Termocolagem</h3>
@@ -1317,6 +1491,7 @@
             </div>
 
             <div class="tab-navigation-footer">
+
                 <button
                     class="nav-card-btn"
                     onclick="switchTabByIndex(3)">
@@ -1326,85 +1501,434 @@
                 <button
                     class="nav-card-btn"
                     onclick="switchTabByIndex(5)">
-                    Próximo: Leis de Newton →
+                    Próximo: Fibra Óptica →
                 </button>
+
             </div>
+
         </section>
 
+        <!-- ============================= -->
+        <!-- FIBRA ÓPTICA -->
+        <!-- ============================= -->
+
         <section
-            id="tab-newton"
-            class="card tab-content"
+            id="tab-fibra"
+            class="card fiber-card tab-content"
             role="tabpanel"
             tabindex="0">
 
-            <h2>Leis de Newton e Dinâmica</h2>
+            <h2>Fibra Óptica</h2>
 
-            <p>
-                As leis de Newton constituem uma das bases da mecânica clássica
-                e permitem analisar o movimento de objetos e sistemas.
+            <p class="section-lead">
+                A Física que permite transmitir informações por meio da luz.
             </p>
 
-            <h3>1. Primeira Lei — Inércia</h3>
+            <p>
+                A fibra óptica é uma tecnologia de transmissão de informações
+                que utiliza pulsos de luz para transportar dados através
+                de filamentos muito finos de vidro ou plástico.
+            </p>
 
             <p>
-                Um corpo tende a manter seu estado de repouso ou movimento
-                retilíneo uniforme quando a força resultante sobre ele é nula.
+                Seu funcionamento está diretamente relacionado aos princípios
+                da óptica, especialmente à
+                <strong>reflexão interna total da luz</strong>.
+            </p>
+
+            <div class="callout fiber-callout">
+
+                <strong>Ideia principal:</strong>
+
+                a luz é conduzida pelo interior da fibra porque o núcleo
+                possui índice de refração maior que o da casca.
+                Dessa maneira, quando a luz atinge a interface entre
+                essas duas regiões em condições adequadas, ela sofre
+                reflexão interna total e continua viajando pelo interior
+                da fibra.
+            </div>
+
+            <h3>O princípio físico</h3>
+
+            <h3>Reflexão Interna Total</h3>
+
+            <p>
+                A reflexão interna total ocorre quando a luz passa de um
+                meio com maior índice de refração para outro com menor
+                índice de refração e atinge a interface com um ângulo
+                suficientemente grande em relação à normal.
+            </p>
+
+            <p>
+                Nesse caso, em vez de atravessar a interface e escapar
+                para o segundo meio, a luz é totalmente refletida
+                de volta para o meio de origem.
+            </p>
+
+            <p>
+                Dentro da fibra, esse fenômeno permite que o sinal luminoso
+                seja guiado ao longo de grandes distâncias.
+            </p>
+
+            <h3>Lei de Snell</h3>
+
+            <p>
+                O comportamento da luz ao passar de um meio para outro
+                pode ser descrito pela Lei de Snell:
             </p>
 
             <div class="formula-box">
-                $$\sum \vec{F}=0 \Rightarrow \vec{v}=\text{constante}$$
+                $$n_1\sin(\theta_1)=n_2\sin(\theta_2)$$
             </div>
 
-            <h3>2. Segunda Lei — Dinâmica</h3>
+            <p>
+                Nessa equação, <strong>n₁</strong> e <strong>n₂</strong>
+                representam os índices de refração dos dois meios,
+                enquanto <strong>θ₁</strong> e <strong>θ₂</strong>
+                são os ângulos medidos em relação à normal.
+            </p>
+
+            <h3>Ângulo Crítico</h3>
 
             <p>
-                A aceleração de um corpo está relacionada à força resultante
-                aplicada e à sua massa.
+                Existe um ângulo específico chamado
+                <strong>ângulo crítico</strong>. Quando a luz passa
+                do meio de maior índice de refração para o meio de menor
+                índice e o ângulo de incidência é maior que esse valor,
+                ocorre a reflexão interna total.
+            </p>
+
+            <p>
+                O ângulo crítico pode ser determinado por:
             </p>
 
             <div class="formula-box">
-                $$\vec{F}_{res}=m\vec{a}$$
+                $$\sin(\theta_c)=\frac{n_2}{n_1}$$
             </div>
-
-            <h3>3. Terceira Lei — Ação e Reação</h3>
 
             <p>
-                Quando dois corpos interagem, as forças que exercem entre si
-                possuem mesma intensidade e sentidos opostos.
+                Essa expressão é válida para
+                <strong>n₁ &gt; n₂</strong>.
             </p>
 
-            <div class="formula-box">
-                $$\vec{F}_{A\rightarrow B}
-                =-\vec{F}_{B\rightarrow A}$$
+            <!-- DIAGRAMA -->
+
+            <div class="fiber-diagram">
+
+                <div class="fiber-visual">
+
+                    <h3 style="color:#65eaff; text-align:center;">
+                        Caminho da luz dentro da fibra
+                    </h3>
+
+                    <div class="fiber-cable">
+
+                        <div class="fiber-cladding">
+
+                            <div class="fiber-core">
+
+                                <div class="light-ray"></div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="diagram-labels">
+
+                        <div class="diagram-label">
+                            <strong>Núcleo:</strong>
+                            região central onde a luz é conduzida.
+                        </div>
+
+                        <div class="diagram-label">
+                            <strong>Casca:</strong>
+                            camada com menor índice de refração que
+                            auxilia no confinamento da luz.
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
+
+            <h3>Estrutura da Fibra Óptica</h3>
+
+            <p>
+                Para que o princípio da reflexão interna total funcione,
+                a fibra óptica possui principalmente duas regiões ópticas:
+                o <strong>núcleo</strong> e a <strong>casca</strong>.
+            </p>
 
             <div class="info-grid">
+
                 <article class="info-box">
-                    <div class="icon">🧍</div>
-                    <h4>Inércia</h4>
+
+                    <div class="icon">🔵</div>
+
+                    <h4>Núcleo (Core)</h4>
+
                     <p>
-                        Explica a resistência às mudanças de movimento.
+                        É a região central da fibra por onde a luz é transmitida.
+                        Possui um índice de refração maior do que o da casca.
                     </p>
+
                 </article>
 
                 <article class="info-box">
-                    <div class="icon">🏎️</div>
-                    <h4>Força</h4>
+
+                    <div class="icon">⚪</div>
+
+                    <h4>Casca (Cladding)</h4>
+
                     <p>
-                        Pode alterar a velocidade ou direção do movimento.
+                        É a camada que envolve o núcleo e possui índice
+                        de refração menor. Essa diferença ajuda a manter
+                        a luz confinada no núcleo.
                     </p>
+
                 </article>
 
                 <article class="info-box">
+
+                    <div class="icon">🛡️</div>
+
+                    <h4>Revestimento</h4>
+
+                    <p>
+                        Em um cabo real existem ainda camadas de proteção
+                        que ajudam a proteger a fibra contra impactos,
+                        umidade, tração e outros danos.
+                    </p>
+
+                </article>
+
+            </div>
+
+            <h3>Como a luz permanece dentro da fibra?</h3>
+
+            <p>
+                Imagine um feixe luminoso entrando no núcleo da fibra
+                com uma direção adequada. Ao atingir a interface entre
+                o núcleo e a casca, o feixe encontra uma região com
+                menor índice de refração.
+            </p>
+
+            <p>
+                Se o ângulo de incidência for maior que o ângulo crítico,
+                a luz não atravessa a interface. Ela é refletida novamente
+                para o interior do núcleo.
+            </p>
+
+            <p>
+                Esse processo acontece sucessivamente, fazendo com que
+                a luz seja conduzida ao longo da fibra.
+            </p>
+
+            <div class="callout fiber-callout">
+
+                <strong>Em resumo:</strong>
+
+                a fibra óptica funciona como um caminho para a luz.
+                O núcleo possui maior índice de refração e a casca possui
+                menor índice de refração. Essa diferença, combinada com
+                o ângulo adequado de incidência, permite a reflexão interna
+                total e a transmissão do sinal luminoso.
+            </div>
+
+            <h3>Por que utilizar luz para transmitir dados?</h3>
+
+            <p>
+                A transmissão óptica apresenta vantagens importantes
+                em sistemas de comunicação. Os sinais podem transportar
+                grandes quantidades de informação e as fibras são pouco
+                suscetíveis a interferências eletromagnéticas externas.
+            </p>
+
+            <div class="info-grid">
+
+                <article class="info-box">
+
                     <div class="icon">🚀</div>
-                    <h4>Ação e reação</h4>
+
+                    <h4>Alta capacidade</h4>
+
                     <p>
-                        Descreve a interação mútua entre corpos.
+                        A tecnologia permite transmitir grandes quantidades
+                        de dados por meio de sinais luminosos.
                     </p>
+
                 </article>
+
+                <article class="info-box">
+
+                    <div class="icon">📡</div>
+
+                    <h4>Comunicação</h4>
+
+                    <p>
+                        É utilizada em redes de internet, telefonia,
+                        televisão e sistemas de comunicação.
+                    </p>
+
+                </article>
+
+                <article class="info-box">
+
+                    <div class="icon">⚡</div>
+
+                    <h4>Baixa interferência</h4>
+
+                    <p>
+                        A transmissão por luz não sofre os mesmos efeitos
+                        de interferência eletromagnética encontrados
+                        em muitos cabos metálicos.
+                    </p>
+
+                </article>
+
+            </div>
+
+            <h3>Aplicações da Fibra Óptica</h3>
+
+            <ul class="custom-list">
+
+                <li>
+                    <strong>Internet:</strong>
+                    transmissão de dados em redes de alta velocidade.
+                </li>
+
+                <li>
+                    <strong>Telefonia:</strong>
+                    comunicação de voz e dados.
+                </li>
+
+                <li>
+                    <strong>Televisão:</strong>
+                    distribuição de sinais digitais.
+                </li>
+
+                <li>
+                    <strong>Medicina:</strong>
+                    utilização em equipamentos de visualização
+                    e procedimentos que empregam fibras ópticas.
+                </li>
+
+                <li>
+                    <strong>Indústria:</strong>
+                    inspeção e transmissão de informações em ambientes
+                    onde cabos ópticos apresentam vantagens.
+                </li>
+
+            </ul>
+
+            <h3>Resumo do funcionamento</h3>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Elemento</th>
+                            <th>Função</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td><strong>Luz</strong></td>
+                            <td>
+                                Transporta a informação através da fibra.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><strong>Núcleo</strong></td>
+                            <td>
+                                Região central por onde a luz se propaga.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><strong>Casca</strong></td>
+                            <td>
+                                Possui menor índice de refração e auxilia
+                                no confinamento da luz.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><strong>Reflexão interna total</strong></td>
+                            <td>
+                                Mantém a luz sendo refletida dentro do núcleo.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><strong>Lei de Snell</strong></td>
+                            <td>
+                                Descreve a relação entre os ângulos
+                                e os índices de refração.
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <div class="quiz">
+
+                <div class="quiz-question">
+                    Desafio rápido: qual fenômeno físico permite que a luz
+                    permaneça confinada no núcleo da fibra óptica?
+                </div>
+
+                <div class="quiz-options">
+
+                    <button
+                        class="quiz-option"
+                        onclick="answerFiberQuiz(this, false)">
+                        A) Difração
+                    </button>
+
+                    <button
+                        class="quiz-option"
+                        onclick="answerFiberQuiz(this, true)">
+                        B) Reflexão interna total
+                    </button>
+
+                    <button
+                        class="quiz-option"
+                        onclick="answerFiberQuiz(this, false)">
+                        C) Polarização
+                    </button>
+
+                    <button
+                        class="quiz-option"
+                        onclick="answerFiberQuiz(this, false)">
+                        D) Efeito Doppler
+                    </button>
+
+                </div>
+
+                <div
+                    class="quiz-result"
+                    id="fiberQuizResult"
+                    aria-live="polite">
+                </div>
+
             </div>
 
             <div class="tab-navigation-footer">
+
                 <button
                     class="nav-card-btn"
                     onclick="switchTabByIndex(4)">
@@ -1413,312 +1937,20 @@
 
                 <button
                     class="nav-card-btn"
-                    onclick="switchTabByIndex(6)">
-                    Próximo: Colisões →
-                </button>
-            </div>
-        </section>
-
-        <section
-            id="tab-colisoes"
-            class="card tab-content"
-            role="tabpanel"
-            tabindex="0">
-
-            <h2>Colisões e Conservação do Movimento</h2>
-
-            <p>
-                Uma colisão ocorre quando dois ou mais corpos interagem durante
-                um intervalo de tempo relativamente pequeno.
-            </p>
-
-            <h3>Quantidade de Movimento</h3>
-
-            <div class="formula-box">
-                $$\vec{p}=m\vec{v}$$
-            </div>
-
-            <p>
-                Em um sistema isolado, a quantidade de movimento total permanece
-                constante.
-            </p>
-
-            <div class="formula-box">
-                $$\vec{p}_{inicial}=\vec{p}_{final}$$
-            </div>
-
-            <h3>Colisão Elástica</h3>
-
-            <p>
-                Em uma colisão perfeitamente elástica, conservam-se tanto a
-                quantidade de movimento quanto a energia cinética total.
-            </p>
-
-            <h3>Colisão Inelástica</h3>
-
-            <p>
-                Parte da energia cinética é transformada em outras formas de
-                energia, como energia térmica, sonora e deformação.
-            </p>
-
-            <h3>Colisão Perfeitamente Inelástica</h3>
-
-            <p>
-                Nesse caso, os corpos permanecem unidos após a colisão e passam
-                a se mover com uma velocidade comum.
-            </p>
-
-            <div class="formula-box">
-                $$m_1v_1+m_2v_2=(m_1+m_2)v_f$$
-            </div>
-
-            <div class="callout">
-                <strong>Exemplo:</strong>
-                um carrinho de laboratório que colide com outro e permanece
-                conectado após o choque aproxima-se desse modelo.
-            </div>
-
-            <div class="tab-navigation-footer">
-                <button
-                    class="nav-card-btn"
-                    onclick="switchTabByIndex(5)">
-                    ← Anterior
-                </button>
-
-                <button
-                    class="nav-card-btn"
-                    onclick="switchTabByIndex(7)">
-                    Próximo: Trabalho →
-                </button>
-            </div>
-        </section>
-
-        <section
-            id="tab-trabalho"
-            class="card tab-content"
-            role="tabpanel"
-            tabindex="0">
-
-            <h2>Trabalho e Energia na Física</h2>
-
-            <p>
-                Trabalho é uma forma de transferência de energia associada à
-                ação de uma força ao longo de um deslocamento.
-            </p>
-
-            <div class="formula-box">
-                $$W=\vec{F}\cdot\vec{d}=Fd\cos(\theta)$$
-            </div>
-
-            <ul class="custom-list">
-                <li>
-                    <strong>Trabalho positivo:</strong>
-                    a força possui componente no sentido do deslocamento.
-                </li>
-
-                <li>
-                    <strong>Trabalho negativo:</strong>
-                    a força possui componente contrária ao deslocamento.
-                </li>
-
-                <li>
-                    <strong>Trabalho nulo:</strong>
-                    a força é perpendicular ao deslocamento.
-                </li>
-            </ul>
-
-            <h3>Energia Cinética</h3>
-
-            <div class="formula-box">
-                $$K=\frac{1}{2}mv^2$$
-            </div>
-
-            <h3>Teorema da Energia Cinética</h3>
-
-            <p>
-                O trabalho da força resultante corresponde à variação da
-                energia cinética do corpo.
-            </p>
-
-            <div class="formula-box">
-                $$W_{total}=\Delta K$$
-            </div>
-
-            <div class="info-grid">
-                <article class="info-box">
-                    <div class="icon">⚡</div>
-                    <h4>Energia</h4>
-                    <p>
-                        Capacidade de produzir transformações.
-                    </p>
-                </article>
-
-                <article class="info-box">
-                    <div class="icon">🏃</div>
-                    <h4>Cinética</h4>
-                    <p>
-                        Energia associada ao movimento.
-                    </p>
-                </article>
-
-                <article class="info-box">
-                    <div class="icon">⬆️</div>
-                    <h4>Potencial</h4>
-                    <p>
-                        Energia associada à posição ou configuração.
-                    </p>
-                </article>
-            </div>
-
-            <div class="tab-navigation-footer">
-                <button
-                    class="nav-card-btn"
-                    onclick="switchTabByIndex(6)">
-                    ← Anterior
-                </button>
-
-                <button
-                    class="nav-card-btn"
-                    onclick="switchTabByIndex(8)">
-                    Próximo: Termodinâmica →
-                </button>
-            </div>
-        </section>
-
-        <section
-            id="tab-termo"
-            class="card tab-content"
-            role="tabpanel"
-            tabindex="0">
-
-            <h2>Termodinâmica e Calorimetria</h2>
-
-            <p>
-                A termodinâmica estuda as transformações de energia envolvendo
-                calor, trabalho, temperatura e energia interna.
-            </p>
-
-            <h3>Primeira Lei da Termodinâmica</h3>
-
-            <p>
-                Considerando a convenção em que W representa o trabalho
-                realizado pelo sistema:
-            </p>
-
-            <div class="formula-box">
-                $$\Delta U=Q-W$$
-            </div>
-
-            <p>
-                A expressão representa a conservação de energia aplicada a um
-                sistema termodinâmico.
-            </p>
-
-            <h3>Segunda Lei da Termodinâmica</h3>
-
-            <p>
-                Processos espontâneos apresentam uma direção preferencial.
-                Em sistemas isolados, a entropia total não diminui.
-            </p>
-
-            <div class="formula-box">
-                $$\Delta S_{isolado}\geq0$$
-            </div>
-
-            <h3>Calor Sensível</h3>
-
-            <p>
-                Quando uma substância sofre variação de temperatura sem mudança
-                de estado físico, podemos utilizar:
-            </p>
-
-            <div class="formula-box">
-                $$Q=mc\Delta T$$
-            </div>
-
-            <h3>Aplicações</h3>
-
-            <div class="info-grid">
-                <article class="info-box">
-                    <div class="icon">❄️</div>
-                    <h4>Refrigeração</h4>
-                    <p>
-                        Utiliza transferências de energia térmica.
-                    </p>
-                </article>
-
-                <article class="info-box">
-                    <div class="icon">🔥</div>
-                    <h4>Máquinas térmicas</h4>
-                    <p>
-                        Transformam parte da energia térmica em trabalho.
-                    </p>
-                </article>
-
-                <article class="info-box">
-                    <div class="icon">🌡️</div>
-                    <h4>Calorimetria</h4>
-                    <p>
-                        Estuda trocas de calor entre sistemas.
-                    </p>
-                </article>
-            </div>
-
-            <div class="quiz">
-                <div class="quiz-question">
-                    Desafio rápido: qual grandeza mede a energia associada ao
-                    movimento de um corpo?
-                </div>
-
-                <div class="quiz-options">
-                    <button
-                        class="quiz-option"
-                        onclick="answerQuiz(this, false)">
-                        A) Temperatura
-                    </button>
-
-                    <button
-                        class="quiz-option"
-                        onclick="answerQuiz(this, true)">
-                        B) Energia cinética
-                    </button>
-
-                    <button
-                        class="quiz-option"
-                        onclick="answerQuiz(this, false)">
-                        C) Pressão
-                    </button>
-
-                    <button
-                        class="quiz-option"
-                        onclick="answerQuiz(this, false)">
-                        D) Densidade
-                    </button>
-                </div>
-
-                <div
-                    class="quiz-result"
-                    id="quizResult"
-                    aria-live="polite">
-                </div>
-            </div>
-
-            <div class="tab-navigation-footer">
-                <button
-                    class="nav-card-btn"
-                    onclick="switchTabByIndex(7)">
-                    ← Anterior
-                </button>
-
-                <button
-                    class="nav-card-btn"
                     disabled>
                     Fim do conteúdo
                 </button>
+
             </div>
+
         </section>
 
+        <!-- ============================= -->
+        <!-- RODAPÉ -->
+        <!-- ============================= -->
+
         <footer class="footer">
+
             <p>
                 <strong>Projeto Integrador IFA</strong>
             </p>
@@ -1728,12 +1960,13 @@
             </p>
 
             <p>
-                Física • Óptica • Mecânica • Energia • Termodinâmica
+                Física • Óptica • Fibra Óptica • Tecnologia do Esporte
             </p>
 
             <p>
                 © 2026 — Projeto educacional
             </p>
+
         </footer>
 
     </main>
@@ -1747,26 +1980,57 @@
     </button>
 
     <script>
-        const tabButtons = document.querySelectorAll('.tab-btn');
-        const tabContents = document.querySelectorAll('.tab-content');
-        const searchInput = document.getElementById('searchInput');
-        const themeButton = document.getElementById('themeButton');
-        const progressBar = document.getElementById('progressBar');
-        const backTop = document.getElementById('backTop');
-        const statusMessage = document.getElementById('statusMessage');
+
+        const tabButtons =
+            document.querySelectorAll('.tab-btn');
+
+        const tabContents =
+            document.querySelectorAll('.tab-content');
+
+        const searchInput =
+            document.getElementById('searchInput');
+
+        const themeButton =
+            document.getElementById('themeButton');
+
+        const progressBar =
+            document.getElementById('progressBar');
+
+        const backTop =
+            document.getElementById('backTop');
+
+        const statusMessage =
+            document.getElementById('statusMessage');
+
+
+        /* ============================= */
+        /* SISTEMA DE ABAS */
+        /* ============================= */
 
         function openTab(evt, tabId) {
+
             tabContents.forEach(content => {
                 content.classList.remove('active');
             });
 
             tabButtons.forEach(button => {
+
                 button.classList.remove('active');
-                button.setAttribute('aria-selected', 'false');
-                button.setAttribute('tabindex', '-1');
+
+                button.setAttribute(
+                    'aria-selected',
+                    'false'
+                );
+
+                button.setAttribute(
+                    'tabindex',
+                    '-1'
+                );
+
             });
 
-            const targetTab = document.getElementById(tabId);
+            const targetTab =
+                document.getElementById(tabId);
 
             if (!targetTab) {
                 return;
@@ -1781,9 +2045,19 @@
                 );
 
             if (selectedButton) {
+
                 selectedButton.classList.add('active');
-                selectedButton.setAttribute('aria-selected', 'true');
-                selectedButton.setAttribute('tabindex', '0');
+
+                selectedButton.setAttribute(
+                    'aria-selected',
+                    'true'
+                );
+
+                selectedButton.setAttribute(
+                    'tabindex',
+                    '0'
+                );
+
                 selectedButton.focus();
             }
 
@@ -1793,14 +2067,23 @@
             });
 
             if (window.MathJax) {
-                MathJax.typesetPromise([targetTab]);
+
+                MathJax.typesetPromise([
+                    targetTab
+                ]);
+
             }
 
             updateProgress();
         }
 
+
         function switchTabByIndex(index) {
-            if (index < 0 || index >= tabButtons.length) {
+
+            if (
+                index < 0 ||
+                index >= tabButtons.length
+            ) {
                 return;
             }
 
@@ -1812,36 +2095,66 @@
             });
         }
 
+
+        /* ============================= */
+        /* TECLADO DAS ABAS */
+        /* ============================= */
+
         tabButtons.forEach((button, index) => {
-            button.addEventListener('keydown', event => {
-                let newIndex = index;
 
-                if (event.key === 'ArrowRight') {
-                    newIndex = (index + 1) % tabButtons.length;
-                }
+            button.addEventListener(
+                'keydown',
+                event => {
 
-                if (event.key === 'ArrowLeft') {
-                    newIndex =
-                        (index - 1 + tabButtons.length) %
-                        tabButtons.length;
-                }
+                    let newIndex = index;
 
-                if (event.key === 'Home') {
-                    newIndex = 0;
-                }
+                    if (event.key === 'ArrowRight') {
 
-                if (event.key === 'End') {
-                    newIndex = tabButtons.length - 1;
-                }
+                        newIndex =
+                            (index + 1) %
+                            tabButtons.length;
 
-                if (newIndex !== index) {
-                    event.preventDefault();
-                    tabButtons[newIndex].click();
+                    }
+
+                    if (event.key === 'ArrowLeft') {
+
+                        newIndex =
+                            (
+                                index - 1 +
+                                tabButtons.length
+                            ) %
+                            tabButtons.length;
+
+                    }
+
+                    if (event.key === 'Home') {
+                        newIndex = 0;
+                    }
+
+                    if (event.key === 'End') {
+                        newIndex =
+                            tabButtons.length - 1;
+                    }
+
+                    if (newIndex !== index) {
+
+                        event.preventDefault();
+
+                        tabButtons[newIndex].click();
+                    }
+
                 }
-            });
+            );
+
         });
 
+
+        /* ============================= */
+        /* BARRA DE PROGRESSO */
+        /* ============================= */
+
         function updateProgress() {
+
             const scrollTop =
                 window.scrollY ||
                 document.documentElement.scrollTop;
@@ -1851,7 +2164,9 @@
                 window.innerHeight;
 
             if (documentHeight <= 0) {
+
                 progressBar.style.width = '100%';
+
                 return;
             }
 
@@ -1859,205 +2174,414 @@
                 (scrollTop / documentHeight) * 100;
 
             progressBar.style.width =
-                `${Math.min(100, Math.max(0, percentage))}%`;
+                `${Math.min(
+                    100,
+                    Math.max(0, percentage)
+                )}%`;
         }
 
-        window.addEventListener('scroll', () => {
-            updateProgress();
 
-            if (window.scrollY > 400) {
-                backTop.classList.add('visible');
-            } else {
-                backTop.classList.remove('visible');
+        window.addEventListener(
+            'scroll',
+            () => {
+
+                updateProgress();
+
+                if (window.scrollY > 400) {
+
+                    backTop.classList.add(
+                        'visible'
+                    );
+
+                } else {
+
+                    backTop.classList.remove(
+                        'visible'
+                    );
+
+                }
+
             }
-        });
+        );
 
-        backTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
 
-        themeButton.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
+        /* ============================= */
+        /* BOTÃO VOLTAR AO TOPO */
+        /* ============================= */
 
-            const darkMode =
-                document.body.classList.contains('dark-mode');
+        backTop.addEventListener(
+            'click',
+            () => {
 
-            themeButton.textContent = darkMode
-                ? '☀️ Modo claro'
-                : '🌙 Modo escuro';
-
-            localStorage.setItem(
-                'ifa-theme',
-                darkMode ? 'dark' : 'light'
-            );
-        });
-
-        function loadTheme() {
-            const savedTheme =
-                localStorage.getItem('ifa-theme');
-
-            if (savedTheme === 'dark') {
-                document.body.classList.add('dark-mode');
-                themeButton.textContent = '☀️ Modo claro';
-            }
-        }
-
-        function showStatus(message) {
-            statusMessage.textContent = message;
-            statusMessage.classList.add('visible');
-
-            clearTimeout(showStatus.timer);
-
-            showStatus.timer = setTimeout(() => {
-                statusMessage.classList.remove('visible');
-            }, 3000);
-        }
-
-        searchInput.addEventListener('input', () => {
-            const query =
-                searchInput.value.trim().toLowerCase();
-
-            if (!query) {
-                tabButtons.forEach(button => {
-                    button.classList.remove('hidden');
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
                 });
 
-                statusMessage.classList.remove('visible');
-                return;
             }
+        );
 
-            let found = false;
 
-            tabButtons.forEach((button, index) => {
-                const tabId =
-                    button.getAttribute('aria-controls');
+        /* ============================= */
+        /* MODO ESCURO */
+        /* ============================= */
 
-                const content =
-                    document.getElementById(tabId);
+        themeButton.addEventListener(
+            'click',
+            () => {
 
-                const text =
-                    `${button.textContent} ${content.textContent}`
-                    .toLowerCase();
-
-                const matches =
-                    text.includes(query);
-
-                button.classList.toggle(
-                    'hidden',
-                    !matches
+                document.body.classList.toggle(
+                    'dark-mode'
                 );
 
-                if (matches) {
-                    found = true;
+                const darkMode =
+                    document.body.classList.contains(
+                        'dark-mode'
+                    );
+
+                themeButton.textContent =
+                    darkMode
+                        ? '☀️ Modo claro'
+                        : '🌙 Modo escuro';
+
+                localStorage.setItem(
+                    'ifa-theme',
+                    darkMode
+                        ? 'dark'
+                        : 'light'
+                );
+
+            }
+        );
+
+
+        function loadTheme() {
+
+            const savedTheme =
+                localStorage.getItem(
+                    'ifa-theme'
+                );
+
+            if (savedTheme === 'dark') {
+
+                document.body.classList.add(
+                    'dark-mode'
+                );
+
+                themeButton.textContent =
+                    '☀️ Modo claro';
+            }
+        }
+
+
+        /* ============================= */
+        /* MENSAGEM DE STATUS */
+        /* ============================= */
+
+        function showStatus(message) {
+
+            statusMessage.textContent =
+                message;
+
+            statusMessage.classList.add(
+                'visible'
+            );
+
+            clearTimeout(
+                showStatus.timer
+            );
+
+            showStatus.timer =
+                setTimeout(() => {
+
+                    statusMessage.classList.remove(
+                        'visible'
+                    );
+
+                }, 3000);
+        }
+
+
+        /* ============================= */
+        /* PESQUISA */
+        /* ============================= */
+
+        searchInput.addEventListener(
+            'input',
+            () => {
+
+                const query =
+                    searchInput.value
+                        .trim()
+                        .toLowerCase();
+
+                if (!query) {
+
+                    tabButtons.forEach(
+                        button => {
+
+                            button.classList.remove(
+                                'hidden'
+                            );
+
+                        }
+                    );
+
+                    statusMessage.classList.remove(
+                        'visible'
+                    );
+
+                    return;
                 }
-            });
 
-            if (found) {
-                showStatus(
-                    'Conteúdos encontrados. Selecione uma aba destacada.'
+                let found = false;
+
+                tabButtons.forEach(
+                    button => {
+
+                        const tabId =
+                            button.getAttribute(
+                                'aria-controls'
+                            );
+
+                        const content =
+                            document.getElementById(
+                                tabId
+                            );
+
+                        const text =
+                            `${button.textContent}
+                            ${content.textContent}`
+                            .toLowerCase();
+
+                        const matches =
+                            text.includes(query);
+
+                        button.classList.toggle(
+                            'hidden',
+                            !matches
+                        );
+
+                        if (matches) {
+                            found = true;
+                        }
+
+                    }
                 );
-            } else {
-                showStatus(
-                    'Nenhum conteúdo encontrado para essa pesquisa.'
-                );
+
+                if (found) {
+
+                    showStatus(
+                        'Conteúdos encontrados. Selecione uma aba destacada.'
+                    );
+
+                } else {
+
+                    showStatus(
+                        'Nenhum conteúdo encontrado para essa pesquisa.'
+                    );
+
+                }
+
             }
-        });
+        );
 
-        function answerQuiz(button, correct) {
+
+        /* ============================= */
+        /* QUIZ DA FIBRA ÓPTICA */
+        /* ============================= */
+
+        function answerFiberQuiz(
+            button,
+            correct
+        ) {
+
             const result =
-                document.getElementById('quizResult');
+                document.getElementById(
+                    'fiberQuizResult'
+                );
 
             const options =
-                document.querySelectorAll('.quiz-option');
+                document.querySelectorAll(
+                    '#tab-fibra .quiz-option'
+                );
 
             options.forEach(option => {
+
                 option.disabled = true;
-                option.style.cursor = 'default';
+
+                option.style.cursor =
+                    'default';
+
             });
 
             if (correct) {
-                button.style.background = '#d1e7dd';
-                button.style.borderColor = '#198754';
+
+                button.style.background =
+                    '#d1e7dd';
+
+                button.style.borderColor =
+                    '#198754';
+
                 result.textContent =
-                    '✅ Correto! A energia cinética está associada ao movimento.';
-                result.style.color = '#198754';
+                    '✅ Correto! A reflexão interna total mantém a luz confinada no núcleo da fibra.';
+
+                result.style.color =
+                    '#198754';
+
             } else {
-                button.style.background = '#f8d7da';
-                button.style.borderColor = '#dc3545';
+
+                button.style.background =
+                    '#f8d7da';
+
+                button.style.borderColor =
+                    '#dc3545';
+
                 result.textContent =
-                    '❌ Resposta incorreta. A resposta correta é energia cinética.';
-                result.style.color = '#dc3545';
+                    '❌ Resposta incorreta. O fenômeno responsável é a reflexão interna total.';
+
+                result.style.color =
+                    '#dc3545';
             }
         }
 
-        document.addEventListener('keydown', event => {
-            if (event.key === 'Escape') {
-                searchInput.value = '';
-                searchInput.dispatchEvent(
-                    new Event('input')
-                );
-                searchInput.blur();
+
+        /* ============================= */
+        /* ATALHOS DO TECLADO */
+        /* ============================= */
+
+        document.addEventListener(
+            'keydown',
+            event => {
+
+                if (event.key === 'Escape') {
+
+                    searchInput.value = '';
+
+                    searchInput.dispatchEvent(
+                        new Event('input')
+                    );
+
+                    searchInput.blur();
+                }
+
+                if (
+                    event.ctrlKey &&
+                    event.key.toLowerCase() === 'k'
+                ) {
+
+                    event.preventDefault();
+
+                    searchInput.focus();
+                }
+
             }
+        );
 
-            if (
-                event.ctrlKey &&
-                event.key.toLowerCase() === 'k'
-            ) {
-                event.preventDefault();
-                searchInput.focus();
+
+        /* ============================= */
+        /* CARREGAMENTO */
+        /* ============================= */
+
+        window.addEventListener(
+            'load',
+            () => {
+
+                loadTheme();
+
+                updateProgress();
+
+                if (window.MathJax) {
+
+                    MathJax.typesetPromise();
+
+                }
+
             }
-        });
+        );
 
-        window.addEventListener('load', () => {
-            loadTheme();
-            updateProgress();
 
-            if (window.MathJax) {
-                MathJax.typesetPromise();
-            }
-        });
+        window.addEventListener(
+            'resize',
+            updateProgress
+        );
 
-        window.addEventListener('resize', updateProgress);
+
+        /* ============================= */
+        /* IMAGENS */
+        /* ============================= */
 
         const images =
             document.querySelectorAll('img');
 
         images.forEach(image => {
-            image.addEventListener('error', () => {
-                image.alt =
-                    'Imagem não encontrada. Verifique o nome do arquivo.';
-                image.style.minHeight = '120px';
-                image.style.background = '#eee';
-            });
+
+            image.addEventListener(
+                'error',
+                () => {
+
+                    image.alt =
+                        'Imagem não encontrada. Verifique o nome do arquivo.';
+
+                    image.style.minHeight =
+                        '120px';
+
+                    image.style.background =
+                        '#eee';
+
+                }
+            );
+
         });
+
+
+        /* ============================= */
+        /* ANIMAÇÃO DOS CARDS */
+        /* ============================= */
 
         const observer =
             new IntersectionObserver(
                 entries => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.style.opacity = '1';
+
+                    entries.forEach(
+                        entry => {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target.style.opacity =
+                                    '1';
+
+                            }
+
                         }
-                    });
+                    );
+
                 },
                 {
                     threshold: 0.15
                 }
             );
 
+
         document
-            .querySelectorAll('.info-box, .callout')
+            .querySelectorAll(
+                '.info-box, .callout'
+            )
             .forEach(element => {
-                element.style.opacity = '0.7';
+
+                element.style.opacity =
+                    '0.7';
+
                 observer.observe(element);
+
             });
 
+
         updateProgress();
+
     </script>
 
 </body>
 </html>
-
