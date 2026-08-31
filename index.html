@@ -1,1923 +1,2134 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Projeto Integrador IFA - A Física e o Mundo">
-    <meta name="author" content="Projeto Integrador IFA">
-    <meta name="theme-color" content="#0066cc">
 
-    <title>Projeto Integrador IFA - A Física e o Mundo</title>
+```
+<meta name="description" content="Projeto Integrador IFA - A Física e o Mundo">
+<meta name="author" content="Projeto Integrador IFA">
+<meta name="theme-color" content="#0066cc">
 
-    <script>
-        MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\\[', '\\]']]
-            },
-            svg: {
-                fontCache: 'global'
-            }
-        };
-    </script>
+<title>Projeto Integrador IFA - A Física e o Mundo</title>
 
-    <script
-        async
-        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-    </script>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']]
+        },
+        svg: {
+            fontCache: 'global'
+        }
+    };
+</script>
 
-    <style>
-        :root {
-            --primary: #0066cc;
-            --primary-dark: #004b99;
-            --secondary: #00a8ff;
-            --accent: #00c853;
-            --danger: #e53935;
-            --warning: #ff9800;
-            --text: #212529;
-            --text-light: #6c757d;
-            --background: #f4f7fb;
-            --card: #ffffff;
-            --border: #dee2e6;
-            --shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            --radius: 14px;
-            --transition: 0.3s ease;
+<script
+    async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<style>
+
+    :root {
+        --primary: #0066cc;
+        --primary-dark: #004b99;
+        --secondary: #00a8ff;
+        --accent: #00c853;
+        --danger: #e53935;
+        --warning: #ff9800;
+        --text: #212529;
+        --text-light: #6c757d;
+        --background: #f4f7fb;
+        --card: #ffffff;
+        --border: #dee2e6;
+        --shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        --radius: 14px;
+        --transition: 0.3s ease;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background:
+            radial-gradient(circle at top right, #e7f3ff, transparent 35%),
+            var(--background);
+        color: var(--text);
+        line-height: 1.7;
+        min-height: 100vh;
+    }
+
+    body.dark-mode {
+        --text: #f1f5f9;
+        --text-light: #adb5bd;
+        --background: #101820;
+        --card: #17212b;
+        --border: #33404d;
+        --shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+
+        background:
+            radial-gradient(circle at top right, #173c59, transparent 35%),
+            var(--background);
+    }
+
+    ::selection {
+        background: var(--secondary);
+        color: #fff;
+    }
+
+    /* ============================= */
+    /* CABEÇALHO */
+    /* ============================= */
+
+    .main-header {
+        position: relative;
+        overflow: hidden;
+        padding: 70px 20px 55px;
+        text-align: center;
+        color: white;
+        background:
+            linear-gradient(135deg, #004b99, #0066cc, #00a8ff);
+    }
+
+    .main-header::before {
+        content: "";
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        top: -130px;
+        left: -80px;
+    }
+
+    .main-header::after {
+        content: "";
+        position: absolute;
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        right: -50px;
+        bottom: -100px;
+    }
+
+    .main-header h1 {
+        position: relative;
+        z-index: 1;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        margin-bottom: 15px;
+        text-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .subtitle {
+        position: relative;
+        z-index: 1;
+        max-width: 850px;
+        margin: auto;
+        font-size: 1.1rem;
+        opacity: 0.95;
+    }
+
+    .header-badge {
+        display: inline-block;
+        margin-top: 25px;
+        padding: 8px 18px;
+        border: 1px solid rgba(255,255,255,0.5);
+        border-radius: 30px;
+        background: rgba(255,255,255,0.12);
+        font-size: 0.9rem;
+    }
+
+    .container {
+        width: min(1180px, 92%);
+        margin: 35px auto 80px;
+    }
+
+    /* ============================= */
+    /* FERRAMENTAS */
+    /* ============================= */
+
+    .tools-bar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        margin-bottom: 25px;
+        padding: 15px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+    }
+
+    .search-box {
+        flex: 1;
+        min-width: 230px;
+        position: relative;
+    }
+
+    .search-box input {
+        width: 100%;
+        padding: 13px 18px 13px 42px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: var(--background);
+        color: var(--text);
+        outline: none;
+        transition: var(--transition);
+    }
+
+    .search-box input:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.15);
+    }
+
+    .search-icon {
+        position: absolute;
+        left: 14px;
+        top: 9px;
+        font-size: 1.2rem;
+    }
+
+    .tool-buttons {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .tool-btn {
+        border: none;
+        padding: 11px 16px;
+        border-radius: 9px;
+        cursor: pointer;
+        background: #edf2f7;
+        color: #263238;
+        font-weight: 600;
+        transition: var(--transition);
+    }
+
+    .dark-mode .tool-btn {
+        background: #263442;
+        color: #fff;
+    }
+
+    .tool-btn:hover {
+        transform: translateY(-2px);
+        background: var(--primary);
+        color: #fff;
+    }
+
+    /* ============================= */
+    /* PROGRESSO */
+    /* ============================= */
+
+    .progress-container {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        height: 5px;
+        background: rgba(0, 0, 0, 0.08);
+    }
+
+    .progress-bar {
+        height: 100%;
+        width: 0;
+        background: linear-gradient(
+            90deg,
+            #00c853,
+            #00a8ff,
+            #0066cc
+        );
+        transition: width 0.1s linear;
+    }
+
+    /* ============================= */
+    /* ABAS */
+    /* ============================= */
+
+    .tabs-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 25px;
+        justify-content: center;
+    }
+
+    .tab-btn {
+        padding: 12px 18px;
+        border: 2px solid transparent;
+        background-color: var(--card);
+        color: var(--text-light);
+        font-weight: 600;
+        font-size: 0.92rem;
+        cursor: pointer;
+        border-radius: 9px;
+        transition: var(--transition);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .tab-btn:hover {
+        background-color: #e8f3ff;
+        color: var(--primary);
+        transform: translateY(-2px);
+    }
+
+    .dark-mode .tab-btn:hover {
+        background-color: #203b50;
+    }
+
+    .tab-btn.active {
+        background: linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+        color: #ffffff;
+        border-color: var(--primary);
+        box-shadow: 0 5px 14px rgba(0,102,204,0.3);
+    }
+
+    .tab-content {
+        display: none;
+        animation: fadeIn 0.45s ease-in-out;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(12px);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        to {
+            opacity: 1;
+            transform: translateY(0);
         }
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    /* ============================= */
+    /* CARDS */
+    /* ============================= */
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background:
-                radial-gradient(circle at top right, #e7f3ff, transparent 35%),
-                var(--background);
-            color: var(--text);
-            line-height: 1.7;
-            min-height: 100vh;
-        }
+    .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: clamp(22px, 4vw, 42px);
+        box-shadow: var(--shadow);
+    }
 
-        body.dark-mode {
-            --text: #f1f5f9;
-            --text-light: #adb5bd;
-            --background: #101820;
-            --card: #17212b;
-            --border: #33404d;
-            --shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    .highlight-card {
+        border-top: 5px solid var(--secondary);
+    }
 
-            background:
-                radial-gradient(circle at top right, #173c59, transparent 35%),
-                var(--background);
-        }
+    .fiber-card {
+        border-top: 5px solid #00c853;
+    }
 
-        ::selection {
-            background: var(--secondary);
-            color: #fff;
-        }
+    .video-card {
+        border-top: 5px solid #8e44ad;
+    }
+
+    .card h2 {
+        color: var(--primary);
+        font-size: clamp(1.7rem, 4vw, 2.4rem);
+        margin-bottom: 20px;
+    }
+
+    .card h3 {
+        color: var(--primary-dark);
+        margin-top: 28px;
+        margin-bottom: 12px;
+    }
+
+    .dark-mode .card h3 {
+        color: #66c7ff;
+    }
+
+    .section-lead {
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: var(--text-light);
+        margin-bottom: 10px;
+    }
+
+    .card p {
+        margin-bottom: 16px;
+    }
+
+    /* ============================= */
+    /* IMAGENS */
+    /* ============================= */
+
+    .image-wrapper {
+        margin: 25px 0;
+        text-align: center;
+    }
+
+    .image-wrapper img {
+        display: block;
+        max-width: 100%;
+        max-height: 430px;
+        object-fit: contain;
+        margin: auto;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        transition: transform var(--transition);
+    }
+
+    .image-wrapper img:hover {
+        transform: scale(1.015);
+    }
+
+    /* ============================= */
+    /* VÍDEOS */
+    /* ============================= */
+
+    .video-wrapper {
+        margin: 30px 0;
+        padding: 22px;
+        background: var(--background);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+    }
+
+    .video-wrapper h4 {
+        color: var(--primary);
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+    }
+
+    .video-wrapper video {
+        display: block;
+        width: 100%;
+        max-width: 900px;
+        max-height: 520px;
+        margin: 0 auto;
+        border-radius: 12px;
+        background: #000;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .video-wrapper p {
+        color: var(--text-light);
+        margin-top: 12px;
+        margin-bottom: 0;
+    }
+
+    /* ============================= */
+    /* CHAMADAS */
+    /* ============================= */
+
+    .callout {
+        margin: 25px 0;
+        padding: 20px;
+        border-left: 5px solid var(--primary);
+        border-radius: 8px;
+        background: rgba(0, 102, 204, 0.08);
+    }
+
+    .fiber-callout {
+        border-left-color: #00c853;
+        background: rgba(0, 200, 83, 0.08);
+    }
+
+    .dark-mode .callout {
+        background: rgba(0, 168, 255, 0.08);
+    }
+
+    .dark-mode .fiber-callout {
+        background: rgba(0, 200, 83, 0.08);
+    }
+
+    /* ============================= */
+    /* LISTAS */
+    /* ============================= */
+
+    .custom-list {
+        padding-left: 25px;
+        margin: 15px 0;
+    }
+
+    .custom-list li {
+        margin-bottom: 12px;
+    }
+
+    .custom-list li::marker {
+        color: var(--primary);
+    }
+
+    /* ============================= */
+    /* TABELAS */
+    /* ============================= */
+
+    .table-container {
+        overflow-x: auto;
+        margin: 25px 0;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 650px;
+    }
+
+    th,
+    td {
+        padding: 14px;
+        border: 1px solid var(--border);
+        text-align: left;
+    }
+
+    th {
+        background: var(--primary);
+        color: #fff;
+    }
+
+    tr:nth-child(even) {
+        background: rgba(0, 102, 204, 0.04);
+    }
+
+    /* ============================= */
+    /* CARDS INFORMATIVOS */
+    /* ============================= */
+
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(
+            auto-fit,
+            minmax(220px, 1fr)
+        );
+        gap: 18px;
+        margin: 25px 0;
+    }
+
+    .info-box {
+        padding: 20px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: linear-gradient(
+            145deg,
+            var(--card),
+            rgba(0, 168, 255, 0.05)
+        );
+        transition: var(--transition);
+    }
+
+    .info-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .info-box .icon {
+        font-size: 2rem;
+        margin-bottom: 8px;
+    }
+
+    .info-box h4 {
+        color: var(--primary);
+        margin-bottom: 7px;
+    }
+
+    /* ============================= */
+    /* FÓRMULAS */
+    /* ============================= */
+
+    .formula-box {
+        overflow-x: auto;
+        padding: 22px;
+        margin: 20px 0;
+        border-radius: 12px;
+        background: #101820;
+        color: #fff;
+        text-align: center;
+        font-size: 1.2rem;
+    }
+
+    /* ============================= */
+    /* DIAGRAMA FIBRA */
+    /* ============================= */
+
+    .fiber-diagram {
+        margin: 30px 0;
+        padding: 25px;
+        border-radius: 15px;
+        background:
+            linear-gradient(
+                135deg,
+                #071c2c,
+                #0b3954,
+                #071c2c
+            );
+        color: white;
+        overflow-x: auto;
+    }
+
+    .fiber-visual {
+        min-width: 600px;
+        max-width: 900px;
+        margin: auto;
+    }
+
+    .fiber-cable {
+        position: relative;
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .fiber-cladding {
+        width: 90%;
+        height: 90px;
+        border-radius: 45px;
+        background: #d9e5ed;
+        border: 8px solid #aabccc;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .fiber-core {
+        position: absolute;
+        left: 2%;
+        right: 2%;
+        top: 25px;
+        height: 32px;
+        border-radius: 20px;
+        background: linear-gradient(
+            180deg,
+            #51e8ff,
+            #00a8ff,
+            #0066cc
+        );
+        overflow: hidden;
+    }
+
+    .light-ray {
+        position: absolute;
+        left: 0;
+        top: 12px;
+        width: 100%;
+        height: 8px;
+        background: #fff700;
+        box-shadow:
+            0 0 10px #fff700,
+            0 0 20px #fff700;
+        clip-path: polygon(
+            0 0,
+            8% 100%,
+            16% 0,
+            24% 100%,
+            32% 0,
+            40% 100%,
+            48% 0,
+            56% 100%,
+            64% 0,
+            72% 100%,
+            80% 0,
+            88% 100%,
+            96% 0,
+            100% 100%,
+            100% 0
+        );
+    }
+
+    .diagram-labels {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .diagram-label {
+        padding: 12px;
+        border-radius: 8px;
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .diagram-label strong {
+        color: #65eaff;
+    }
+
+    /* ============================= */
+    /* NAVEGAÇÃO */
+    /* ============================= */
+
+    .tab-navigation-footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 35px;
+        padding-top: 22px;
+        border-top: 1px solid var(--border);
+    }
+
+    .nav-card-btn {
+        padding: 10px 18px;
+        background: #6c757d;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: var(--transition);
+    }
+
+    .nav-card-btn:hover:not(:disabled) {
+        background: var(--primary);
+        transform: translateY(-2px);
+    }
+
+    .nav-card-btn:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+    }
+
+    /* ============================= */
+    /* STATUS */
+    /* ============================= */
+
+    .status-message {
+        display: none;
+        margin: 15px 0;
+        padding: 12px 16px;
+        border-radius: 8px;
+        background: #fff3cd;
+        color: #664d03;
+    }
+
+    .status-message.visible {
+        display: block;
+    }
+
+    .dark-mode .status-message {
+        background: #443b1d;
+        color: #ffe69c;
+    }
+
+    /* ============================= */
+    /* QUIZ */
+    /* ============================= */
+
+    .quiz {
+        margin-top: 30px;
+        padding: 25px;
+        border-radius: 12px;
+        background: rgba(0, 102, 204, 0.06);
+    }
+
+    .quiz-question {
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    .quiz-options {
+        display: grid;
+        gap: 10px;
+    }
+
+    .quiz-option {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--card);
+        color: var(--text);
+        cursor: pointer;
+        transition: var(--transition);
+    }
+
+    .quiz-option:hover {
+        border-color: var(--primary);
+        transform: translateX(4px);
+    }
+
+    .quiz-result {
+        margin-top: 15px;
+        font-weight: 700;
+        min-height: 25px;
+    }
+
+    /* ============================= */
+    /* VOLTAR AO TOPO */
+    /* ============================= */
+
+    .back-top {
+        position: fixed;
+        right: 22px;
+        bottom: 22px;
+        width: 48px;
+        height: 48px;
+        border: none;
+        border-radius: 50%;
+        background: var(--primary);
+        color: white;
+        font-size: 1.2rem;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        z-index: 90;
+    }
+
+    .back-top.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* ============================= */
+    /* RODAPÉ */
+    /* ============================= */
+
+    .footer {
+        margin-top: 50px;
+        padding: 35px 20px;
+        text-align: center;
+        background: #101820;
+        color: #fff;
+    }
+
+    .footer p {
+        margin: 6px 0;
+    }
+
+    .footer strong {
+        color: #66c7ff;
+    }
+
+    .hidden {
+        display: none !important;
+    }
+
+    /* ============================= */
+    /* RESPONSIVO */
+    /* ============================= */
+
+    @media (max-width: 700px) {
 
         .main-header {
-            position: relative;
-            overflow: hidden;
-            padding: 70px 20px 55px;
-            text-align: center;
-            color: white;
-            background:
-                linear-gradient(135deg, #004b99, #0066cc, #00a8ff);
-        }
-
-        .main-header::before {
-            content: "";
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.08);
-            top: -130px;
-            left: -80px;
-        }
-
-        .main-header::after {
-            content: "";
-            position: absolute;
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.08);
-            right: -50px;
-            bottom: -100px;
-        }
-
-        .main-header h1 {
-            position: relative;
-            z-index: 1;
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 15px;
-            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .subtitle {
-            position: relative;
-            z-index: 1;
-            max-width: 850px;
-            margin: auto;
-            font-size: 1.1rem;
-            opacity: 0.95;
-        }
-
-        .header-badge {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 8px 18px;
-            border: 1px solid rgba(255,255,255,0.5);
-            border-radius: 30px;
-            background: rgba(255,255,255,0.12);
-            font-size: 0.9rem;
+            padding: 45px 18px;
         }
 
         .container {
-            width: min(1180px, 92%);
-            margin: 35px auto 80px;
-        }
-
-        .tools-bar {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
-            margin-bottom: 25px;
-            padding: 15px;
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-        }
-
-        .search-box {
-            flex: 1;
-            min-width: 230px;
-            position: relative;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 13px 18px 13px 42px;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            background: var(--background);
-            color: var(--text);
-            outline: none;
-            transition: var(--transition);
-        }
-
-        .search-box input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.15);
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 14px;
-            top: 9px;
-            font-size: 1.2rem;
-        }
-
-        .tool-buttons {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .tool-btn {
-            border: none;
-            padding: 11px 16px;
-            border-radius: 9px;
-            cursor: pointer;
-            background: #edf2f7;
-            color: #263238;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .dark-mode .tool-btn {
-            background: #263442;
-            color: #fff;
-        }
-
-        .tool-btn:hover {
-            transform: translateY(-2px);
-            background: var(--primary);
-            color: #fff;
-        }
-
-        .progress-container {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            height: 5px;
-            background: rgba(0, 0, 0, 0.08);
-        }
-
-        .progress-bar {
-            height: 100%;
-            width: 0;
-            background: linear-gradient(
-                90deg,
-                #00c853,
-                #00a8ff,
-                #0066cc
-            );
-            transition: width 0.1s linear;
+            width: 94%;
         }
 
         .tabs-nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 25px;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: 1fr;
         }
 
         .tab-btn {
-            padding: 12px 18px;
-            border: 2px solid transparent;
-            background-color: var(--card);
-            color: var(--text-light);
-            font-weight: 600;
-            font-size: 0.92rem;
-            cursor: pointer;
-            border-radius: 9px;
-            transition: var(--transition);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-
-        .tab-btn:hover {
-            background-color: #e8f3ff;
-            color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .dark-mode .tab-btn:hover {
-            background-color: #203b50;
-        }
-
-        .tab-btn.active {
-            background: linear-gradient(
-                135deg,
-                var(--primary),
-                var(--secondary)
-            );
-            color: #ffffff;
-            border-color: var(--primary);
-            box-shadow: 0 5px 14px rgba(0,102,204,0.3);
-        }
-
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.45s ease-in-out;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(12px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: clamp(22px, 4vw, 42px);
-            box-shadow: var(--shadow);
-        }
-
-        .highlight-card {
-            border-top: 5px solid var(--secondary);
-        }
-
-        .fiber-card {
-            border-top: 5px solid #00c853;
-        }
-
-        .card h2 {
-            color: var(--primary);
-            font-size: clamp(1.7rem, 4vw, 2.4rem);
-            margin-bottom: 20px;
-        }
-
-        .card h3 {
-            color: var(--primary-dark);
-            margin-top: 28px;
-            margin-bottom: 12px;
-        }
-
-        .dark-mode .card h3 {
-            color: #66c7ff;
-        }
-
-        .section-lead {
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: var(--text-light);
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            margin-bottom: 16px;
-        }
-
-        .image-wrapper {
-            margin: 25px 0;
-            text-align: center;
-        }
-
-        .image-wrapper img {
-            display: block;
-            max-width: 100%;
-            max-height: 430px;
-            object-fit: contain;
-            margin: auto;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-            transition: transform var(--transition);
-        }
-
-        .image-wrapper img:hover {
-            transform: scale(1.015);
-        }
-
-        /* ============================= */
-        /* VÍDEOS */
-        /* ============================= */
-
-        .video-wrapper {
-            margin: 30px 0;
-            padding: 22px;
-            background: var(--background);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
-        }
-
-        .video-wrapper h4 {
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-        }
-
-        .video-wrapper video {
-            display: block;
             width: 100%;
-            max-width: 900px;
-            max-height: 520px;
-            margin: 0 auto;
-            border-radius: 12px;
-            background: #000;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
 
-        .video-wrapper p {
-            color: var(--text-light);
-            margin-top: 12px;
-            margin-bottom: 0;
+        .tools-bar {
+            align-items: stretch;
         }
 
-        .callout {
-            margin: 25px 0;
-            padding: 20px;
-            border-left: 5px solid var(--primary);
-            border-radius: 8px;
-            background: rgba(0, 102, 204, 0.08);
-        }
-
-        .fiber-callout {
-            border-left-color: #00c853;
-            background: rgba(0, 200, 83, 0.08);
-        }
-
-        .dark-mode .callout {
-            background: rgba(0, 168, 255, 0.08);
-        }
-
-        .dark-mode .fiber-callout {
-            background: rgba(0, 200, 83, 0.08);
-        }
-
-        .custom-list {
-            padding-left: 25px;
-            margin: 15px 0;
-        }
-
-        .custom-list li {
-            margin-bottom: 12px;
-        }
-
-        .custom-list li::marker {
-            color: var(--primary);
-        }
-
-        .table-container {
-            overflow-x: auto;
-            margin: 25px 0;
-        }
-
-        table {
+        .tool-buttons {
             width: 100%;
-            border-collapse: collapse;
-            min-width: 650px;
         }
 
-        th,
-        td {
-            padding: 14px;
-            border: 1px solid var(--border);
-            text-align: left;
-        }
-
-        th {
-            background: var(--primary);
-            color: #fff;
-        }
-
-        tr:nth-child(even) {
-            background: rgba(0, 102, 204, 0.04);
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(
-                auto-fit,
-                minmax(220px, 1fr)
-            );
-            gap: 18px;
-            margin: 25px 0;
-        }
-
-        .info-box {
-            padding: 20px;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            background: linear-gradient(
-                145deg,
-                var(--card),
-                rgba(0, 168, 255, 0.05)
-            );
-            transition: var(--transition);
-        }
-
-        .info-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .info-box .icon {
-            font-size: 2rem;
-            margin-bottom: 8px;
-        }
-
-        .info-box h4 {
-            color: var(--primary);
-            margin-bottom: 7px;
-        }
-
-        .formula-box {
-            overflow-x: auto;
-            padding: 22px;
-            margin: 20px 0;
-            border-radius: 12px;
-            background: #101820;
-            color: #fff;
-            text-align: center;
-            font-size: 1.2rem;
-        }
-
-        .fiber-diagram {
-            margin: 30px 0;
-            padding: 25px;
-            border-radius: 15px;
-            background:
-                linear-gradient(
-                    135deg,
-                    #071c2c,
-                    #0b3954,
-                    #071c2c
-                );
-            color: white;
-            overflow-x: auto;
-        }
-
-        .fiber-visual {
-            min-width: 600px;
-            max-width: 900px;
-            margin: auto;
-        }
-
-        .fiber-cable {
-            position: relative;
-            height: 150px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .fiber-cladding {
-            width: 90%;
-            height: 90px;
-            border-radius: 45px;
-            background: #d9e5ed;
-            border: 8px solid #aabccc;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .fiber-core {
-            position: absolute;
-            left: 2%;
-            right: 2%;
-            top: 25px;
-            height: 32px;
-            border-radius: 20px;
-            background: linear-gradient(
-                180deg,
-                #51e8ff,
-                #00a8ff,
-                #0066cc
-            );
-            overflow: hidden;
-        }
-
-        .light-ray {
-            position: absolute;
-            left: 0;
-            top: 12px;
-            width: 100%;
-            height: 8px;
-            background: #fff700;
-            box-shadow:
-                0 0 10px #fff700,
-                0 0 20px #fff700;
-            clip-path: polygon(
-                0 0,
-                8% 100%,
-                16% 0,
-                24% 100%,
-                32% 0,
-                40% 100%,
-                48% 0,
-                56% 100%,
-                64% 0,
-                72% 100%,
-                80% 0,
-                88% 100%,
-                96% 0,
-                100% 100%,
-                100% 0
-            );
-        }
-
-        .diagram-labels {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .diagram-label {
-            padding: 12px;
-            border-radius: 8px;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.15);
-        }
-
-        .diagram-label strong {
-            color: #65eaff;
+        .tool-btn {
+            flex: 1;
         }
 
         .tab-navigation-footer {
-            display: flex;
-            justify-content: space-between;
-            gap: 15px;
-            margin-top: 35px;
-            padding-top: 22px;
-            border-top: 1px solid var(--border);
+            flex-direction: column;
         }
 
         .nav-card-btn {
-            padding: 10px 18px;
-            background: #6c757d;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
+            width: 100%;
         }
 
-        .nav-card-btn:hover:not(:disabled) {
-            background: var(--primary);
-            transform: translateY(-2px);
+        .card {
+            padding: 22px 18px;
         }
 
-        .nav-card-btn:disabled {
-            opacity: 0.45;
-            cursor: not-allowed;
-        }
-
-        .status-message {
-            display: none;
-            margin: 15px 0;
-            padding: 12px 16px;
-            border-radius: 8px;
-            background: #fff3cd;
-            color: #664d03;
-        }
-
-        .status-message.visible {
-            display: block;
-        }
-
-        .dark-mode .status-message {
-            background: #443b1d;
-            color: #ffe69c;
-        }
-
-        .quiz {
-            margin-top: 30px;
-            padding: 25px;
-            border-radius: 12px;
-            background: rgba(0, 102, 204, 0.06);
-        }
-
-        .quiz-question {
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .quiz-options {
-            display: grid;
-            gap: 10px;
-        }
-
-        .quiz-option {
+        .video-wrapper {
             padding: 12px;
-            text-align: left;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            background: var(--card);
-            color: var(--text);
-            cursor: pointer;
-            transition: var(--transition);
         }
 
-        .quiz-option:hover {
-            border-color: var(--primary);
-            transform: translateX(4px);
+        .video-wrapper video {
+            max-height: 400px;
         }
+    }
 
-        .quiz-result {
-            margin-top: 15px;
-            font-weight: 700;
-            min-height: 25px;
-        }
+    /* ============================= */
+    /* IMPRESSÃO */
+    /* ============================= */
 
-        .back-top {
-            position: fixed;
-            right: 22px;
-            bottom: 22px;
-            width: 48px;
-            height: 48px;
-            border: none;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            z-index: 90;
-        }
+    @media print {
 
-        .back-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .footer {
-            margin-top: 50px;
-            padding: 35px 20px;
-            text-align: center;
-            background: #101820;
-            color: #fff;
-        }
-
-        .footer p {
-            margin: 6px 0;
-        }
-
-        .footer strong {
-            color: #66c7ff;
-        }
-
-        .hidden {
+        .tools-bar,
+        .tabs-nav,
+        .tab-navigation-footer,
+        .back-top,
+        .progress-container {
             display: none !important;
         }
 
-        @media (max-width: 700px) {
-
-            .main-header {
-                padding: 45px 18px;
-            }
-
-            .container {
-                width: 94%;
-            }
-
-            .tabs-nav {
-                display: grid;
-                grid-template-columns: 1fr;
-            }
-
-            .tab-btn {
-                width: 100%;
-            }
-
-            .tools-bar {
-                align-items: stretch;
-            }
-
-            .tool-buttons {
-                width: 100%;
-            }
-
-            .tool-btn {
-                flex: 1;
-            }
-
-            .tab-navigation-footer {
-                flex-direction: column;
-            }
-
-            .nav-card-btn {
-                width: 100%;
-            }
-
-            .card {
-                padding: 22px 18px;
-            }
-
-            .video-wrapper {
-                padding: 12px;
-            }
-
-            .video-wrapper video {
-                max-height: 400px;
-            }
+        .tab-content {
+            display: block !important;
+            page-break-inside: avoid;
         }
 
-        @media print {
-
-            .tools-bar,
-            .tabs-nav,
-            .tab-navigation-footer,
-            .back-top,
-            .progress-container {
-                display: none !important;
-            }
-
-            .tab-content {
-                display: block !important;
-                page-break-inside: avoid;
-            }
-
-            body {
-                background: white;
-                color: black;
-            }
-
-            .card {
-                box-shadow: none;
-                border: 1px solid #aaa;
-                margin-bottom: 25px;
-            }
+        body {
+            background: white;
+            color: black;
         }
-    </style>
+
+        .card {
+            box-shadow: none;
+            border: 1px solid #aaa;
+            margin-bottom: 25px;
+        }
+    }
+
+</style>
+```
+
 </head>
 
 <body>
 
-    <div class="progress-container">
-        <div class="progress-bar" id="progressBar"></div>
+```
+<!-- ============================= -->
+<!-- BARRA DE PROGRESSO -->
+<!-- ============================= -->
+
+<div class="progress-container">
+    <div
+        class="progress-bar"
+        id="progressBar">
     </div>
+</div>
 
-    <header class="main-header">
 
-        <h1>A Física Projeta Tudo o Que Você Vê</h1>
+<!-- ============================= -->
+<!-- CABEÇALHO -->
+<!-- ============================= -->
 
-        <p class="subtitle">
-            Descubra a ciência por trás das cores, das imagens,
-            do olho humano, da reflexão, da fibra óptica
-            e da tecnologia do esporte.
-        </p>
+<header class="main-header">
 
-        <span class="header-badge">
-            Projeto Integrador IFA • Física e Tecnologia
-        </span>
+    <h1>
+        A Física Projeta Tudo o Que Você Vê
+    </h1>
 
-    </header>
+    <p class="subtitle">
+        Descubra a ciência por trás das cores,
+        das imagens, do olho humano, da reflexão,
+        da fibra óptica e da tecnologia do esporte.
+    </p>
 
-    <main class="container">
+    <span class="header-badge">
+        Projeto Integrador IFA • Física e Tecnologia
+    </span>
 
-        <section
-            class="tools-bar"
-            aria-label="Ferramentas do projeto">
+</header>
 
-            <div class="search-box">
 
-                <span class="search-icon">🔎</span>
+<main class="container">
 
-                <input
-                    type="search"
-                    id="searchInput"
-                    placeholder="Pesquisar um assunto..."
-                    aria-label="Pesquisar conteúdo">
 
-            </div>
+    <!-- ============================= -->
+    <!-- FERRAMENTAS -->
+    <!-- ============================= -->
 
-            <div class="tool-buttons">
+    <section
+        class="tools-bar"
+        aria-label="Ferramentas do projeto">
 
-                <button
-                    class="tool-btn"
-                    id="themeButton"
-                    type="button">
-                    🌙 Modo escuro
-                </button>
+        <div class="search-box">
 
-                <button
-                    class="tool-btn"
-                    type="button"
-                    onclick="window.print()">
-                    🖨️ Imprimir
-                </button>
+            <span class="search-icon">
+                🔎
+            </span>
 
-            </div>
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Pesquisar um assunto..."
+                aria-label="Pesquisar conteúdo">
 
-        </section>
-
-        <div
-            class="status-message"
-            id="statusMessage"
-            role="status">
         </div>
 
-        <!-- ============================= -->
-        <!-- ABAS -->
-        <!-- ============================= -->
 
-        <nav
-            class="tabs-nav"
-            role="tablist"
-            aria-label="Conteúdos de Física">
+        <div class="tool-buttons">
 
             <button
-                class="tab-btn active"
-                role="tab"
-                aria-selected="true"
-                aria-controls="tab-imagens"
-                tabindex="0"
-                onclick="openTab(event, 'tab-imagens')">
-                Formação de Imagens
+                class="tool-btn"
+                id="themeButton"
+                type="button">
+
+                🌙 Modo escuro
+
             </button>
+
 
             <button
-                class="tab-btn"
-                role="tab"
-                aria-selected="false"
-                aria-controls="tab-cores"
-                tabindex="-1"
-                onclick="openTab(event, 'tab-cores')">
-                Luz e Cores
+                class="tool-btn"
+                type="button"
+                onclick="window.print()">
+
+                🖨️ Imprimir
+
             </button>
 
-            <button
-                class="tab-btn"
-                role="tab"
-                aria-selected="false"
-                aria-controls="tab-espelhos"
-                tabindex="-1"
-                onclick="openTab(event, 'tab-espelhos')">
-                Espelhos e Reflexão
-            </button>
+        </div>
 
-            <button
-                class="tab-btn"
-                role="tab"
-                aria-selected="false"
-                aria-controls="tab-olho"
-                tabindex="-1"
-                onclick="openTab(event, 'tab-olho')">
-                Óptica do Olho
-            </button>
+    </section>
 
-            <button
-                class="tab-btn"
-                role="tab"
-                aria-selected="false"
-                aria-controls="tab-trionda"
-                tabindex="-1"
-                onclick="openTab(event, 'tab-trionda')">
-                Física da Trionda
-            </button>
 
-            <button
-                class="tab-btn"
-                role="tab"
-                aria-selected="false"
-                aria-controls="tab-fibra"
-                tabindex="-1"
-                onclick="openTab(event, 'tab-fibra')">
-                Fibra Óptica
-            </button>
+    <div
+        class="status-message"
+        id="statusMessage"
+        role="status">
+    </div>
 
-        </nav>
 
-        <!-- ============================= -->
-        <!-- FORMAÇÃO DE IMAGENS -->
-        <!-- ============================= -->
+    <!-- ============================= -->
+    <!-- NAVEGAÇÃO DAS ABAS -->
+    <!-- ============================= -->
 
-        <section
-            id="tab-imagens"
-            class="card tab-content active"
-            role="tabpanel"
-            tabindex="0">
+    <nav
+        class="tabs-nav"
+        role="tablist"
+        aria-label="Conteúdos de Física">
 
-            <h2>Formação de Imagens</h2>
 
-            <p>
-                A formação de imagens é o processo pelo qual a luz,
-                ao interagir com objetos e meios ópticos, organiza-se
-                para criar uma representação visual daquilo que nos cerca.
-            </p>
+        <button
+            class="tab-btn active"
+            role="tab"
+            aria-selected="true"
+            aria-controls="tab-imagens"
+            tabindex="0"
+            onclick="openTab(event, 'tab-imagens')">
 
-            <p>
-                Sempre que você olha para uma fotografia, assiste a um filme,
-                utiliza um projetor ou observa um objeto através de uma lente,
-                está testemunhando princípios da óptica geométrica.
-            </p>
+            Formação de Imagens
 
-            <div class="image-wrapper">
+        </button>
 
-                <img
-                    src="images.jpeg"
-                    alt="Ilustração relacionada à formação de imagens"
-                    loading="lazy">
 
-            </div>
+        <button
+            class="tab-btn"
+            role="tab"
+            aria-selected="false"
+            aria-controls="tab-cores"
+            tabindex="-1"
+            onclick="openTab(event, 'tab-cores')">
 
-            <div class="info-grid">
+            Luz e Cores
 
-                <article class="info-box">
+        </button>
 
-                    <div class="icon">📷</div>
 
-                    <h4>Câmeras</h4>
+        <button
+            class="tab-btn"
+            role="tab"
+            aria-selected="false"
+            aria-controls="tab-espelhos"
+            tabindex="-1"
+            onclick="openTab(event, 'tab-espelhos')">
 
-                    <p>
-                        Utilizam lentes para formar imagens reais
-                        sobre um sensor fotossensível.
-                    </p>
+            Espelhos e Reflexão
 
-                </article>
+        </button>
 
-                <article class="info-box">
 
-                    <div class="icon">🎥</div>
+        <button
+            class="tab-btn"
+            role="tab"
+            aria-selected="false"
+            aria-controls="tab-olho"
+            tabindex="-1"
+            onclick="openTab(event, 'tab-olho')">
 
-                    <h4>Projetores</h4>
+            Óptica do Olho
 
-                    <p>
-                        Utilizam sistemas ópticos para ampliar
-                        e projetar imagens sobre uma superfície.
-                    </p>
+        </button>
 
-                </article>
 
-                <article class="info-box">
+        <button
+            class="tab-btn"
+            role="tab"
+            aria-selected="false"
+            aria-controls="tab-trionda"
+            tabindex="-1"
+            onclick="openTab(event, 'tab-trionda')">
 
-                    <div class="icon">🔍</div>
+            Física da Trionda
 
-                    <h4>Lupas</h4>
+        </button>
 
-                    <p>
-                        Produzem imagens virtuais ampliadas quando
-                        o objeto está dentro da distância focal.
-                    </p>
 
-                </article>
+        <button
+            class="tab-btn"
+            role="tab"
+            aria-selected="false"
+            aria-controls="tab-fibra"
+            tabindex="-1"
+            onclick="openTab(event, 'tab-fibra')">
 
-            </div>
+            Fibra Óptica
 
-            <div class="callout">
+        </button>
+
+
+        <!-- NOVA ABA DE VÍDEOS -->
+
+        <button
+            class="tab-btn"
+            role="tab"
+            aria-selected="false"
+            aria-controls="tab-videos"
+            tabindex="-1"
+            onclick="openTab(event, 'tab-videos')">
+
+            🎬 Vídeos
+
+        </button>
+
+    </nav>
+
+
+    <!-- ===================================================== -->
+    <!-- ABA 1 - FORMAÇÃO DE IMAGENS -->
+    <!-- ===================================================== -->
+
+    <section
+        id="tab-imagens"
+        class="card tab-content active"
+        role="tabpanel"
+        tabindex="0">
+
+        <h2>
+            Formação de Imagens
+        </h2>
+
+        <p>
+            A formação de imagens é o processo pelo qual
+            a luz, ao interagir com objetos e meios ópticos,
+            organiza-se para criar uma representação visual
+            daquilo que nos cerca.
+        </p>
+
+        <p>
+            Sempre que você olha para uma fotografia,
+            assiste a um filme, utiliza um projetor ou
+            observa um objeto através de uma lente,
+            está testemunhando princípios da óptica geométrica.
+        </p>
+
+
+        <div class="image-wrapper">
+
+            <img
+                src="images.jpeg"
+                alt="Ilustração relacionada à formação de imagens"
+                loading="lazy">
+
+        </div>
+
+
+        <div class="info-grid">
+
+            <article class="info-box">
+
+                <div class="icon">📷</div>
+
+                <h4>
+                    Câmeras
+                </h4>
 
                 <p>
-                    <strong>Imagens Reais:</strong>
-                    são formadas pelo cruzamento efetivo dos raios de luz.
-                    Podem ser projetadas sobre uma tela.
+                    Utilizam lentes para formar imagens reais
+                    sobre um sensor fotossensível.
                 </p>
+
+            </article>
+
+
+            <article class="info-box">
+
+                <div class="icon">🎥</div>
+
+                <h4>
+                    Projetores
+                </h4>
 
                 <p>
-                    <strong>Imagens Virtuais:</strong>
-                    surgem do prolongamento aparente dos raios luminosos.
-                    Não podem ser projetadas diretamente sobre uma tela.
+                    Utilizam sistemas ópticos para ampliar
+                    e projetar imagens sobre uma superfície.
                 </p>
 
-            </div>
+            </article>
 
-            <h3>Equação de Gauss</h3>
 
-            <p>
-                A posição das imagens formadas por lentes delgadas
-                e espelhos esféricos pode ser determinada pela relação:
-            </p>
+            <article class="info-box">
 
-            <div class="formula-box">
-                $$\frac{1}{f} = \frac{1}{p} + \frac{1}{p'}$$
-            </div>
+                <div class="icon">🔍</div>
 
-            <p>
-                Onde <strong>f</strong> representa a distância focal,
-                <strong>p</strong> representa a distância do objeto e
-                <strong>p'</strong> representa a distância da imagem.
-            </p>
-
-            <div class="callout">
-
-                <strong>Aplicação:</strong>
-
-                essa relação permite determinar matematicamente onde
-                a imagem será formada em diferentes sistemas ópticos.
-
-            </div>
-
-            <div class="tab-navigation-footer">
-
-                <button
-                    class="nav-card-btn"
-                    disabled>
-                    ← Anterior
-                </button>
-
-                <button
-                    class="nav-card-btn"
-                    onclick="switchTabByIndex(1)">
-                    Próximo: Luz e Cores →
-                </button>
-
-            </div>
-
-        </section>
-
-        <!-- ============================= -->
-        <!-- LUZ E CORES -->
-        <!-- ============================= -->
-
-        <section
-            id="tab-cores"
-            class="card tab-content"
-            role="tabpanel"
-            tabindex="0">
-
-            <h2>O Espetáculo da Luz e da Percepção</h2>
-
-            <p>
-                A luz visível é uma pequena parte do espectro eletromagnético.
-                As diferentes frequências percebidas pelo sistema visual humano
-                estão associadas às diferentes cores.
-            </p>
-
-            <ul class="custom-list">
-
-                <li>
-                    <strong>Maçã vermelha:</strong>
-                    reflete principalmente as frequências associadas
-                    ao vermelho e absorve grande parte das demais.
-                </li>
-
-                <li>
-                    <strong>Objeto branco:</strong>
-                    tende a refletir grande parte das frequências visíveis.
-                </li>
-
-                <li>
-                    <strong>Objeto preto:</strong>
-                    absorve grande parte da radiação visível incidente.
-                </li>
-
-            </ul>
-
-            <h3>Síntese Aditiva</h3>
-
-            <p>
-                A síntese aditiva é baseada na combinação de fontes luminosas.
-                Seus componentes fundamentais são vermelho, verde e azul,
-                formando o sistema RGB.
-            </p>
-
-            <div class="info-grid">
-
-                <article class="info-box">
-
-                    <div class="icon">🔴</div>
-
-                    <h4>Vermelho</h4>
-
-                    <p>
-                        Um dos componentes fundamentais do sistema RGB.
-                    </p>
-
-                </article>
-
-                <article class="info-box">
-
-                    <div class="icon">🟢</div>
-
-                    <h4>Verde</h4>
-
-                    <p>
-                        Componente luminoso essencial para telas digitais.
-                    </p>
-
-                </article>
-
-                <article class="info-box">
-
-                    <div class="icon">🔵</div>
-
-                    <h4>Azul</h4>
-
-                    <p>
-                        Completa o sistema RGB utilizado em dispositivos.
-                    </p>
-
-                </article>
-
-            </div>
-
-            <h3>Síntese Subtrativa</h3>
-
-            <p>
-                A síntese subtrativa ocorre principalmente com pigmentos.
-                O sistema CMYK utiliza ciano, magenta, amarelo e preto.
-            </p>
-
-            <div class="image-wrapper">
-
-                <img
-                    src="images.png"
-                    alt="Esquema das sínteses aditiva e subtrativa de cores"
-                    loading="lazy">
-
-            </div>
-
-            <div class="callout">
-
-                <strong>Curiosidade:</strong>
-
-                monitores emitem luz, enquanto uma folha de papel normalmente
-                depende da luz externa para que suas cores sejam percebidas.
-
-            </div>
-
-            <div class="tab-navigation-footer">
-
-                <button
-                    class="nav-card-btn"
-                    onclick="switchTabByIndex(0)">
-                    ← Anterior
-                </button>
-
-                <button
-                    class="nav-card-btn"
-                    onclick="switchTabByIndex(2)">
-                    Próximo: Espelhos →
-                </button>
-
-            </div>
-
-        </section>
-
-        <!-- ============================= -->
-        <!-- ESPELHOS -->
-        <!-- ============================= -->
-
-        <section
-            id="tab-espelhos"
-            class="card tab-content"
-            role="tabpanel"
-            tabindex="0">
-
-            <h2>Espelhos e Reflexão</h2>
-
-            <p class="section-lead">
-                O caminho que a luz faz para voltar.
-            </p>
-
-            <p>
-                A reflexão acontece quando a luz atinge uma superfície
-                e retorna ao meio de origem.
-            </p>
-
-            <p>
-                A principal relação da reflexão especular é:
-            </p>
-
-            <div class="formula-box">
-                $$\theta_i = \theta_r$$
-            </div>
-
-            <p>
-                O ângulo de incidência é igual ao ângulo de reflexão,
-                considerando os ângulos medidos em relação à reta normal.
-            </p>
-
-            <div class="table-container">
-
-                <table>
-
-                    <thead>
-
-                        <tr>
-                            <th>Tipo</th>
-                            <th>Características</th>
-                            <th>Exemplo</th>
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-
-                        <tr>
-                            <td><strong>Plano</strong></td>
-                            <td>
-                                Imagem virtual, direita e de mesmo tamanho.
-                            </td>
-                            <td>Espelhos domésticos.</td>
-                        </tr>
-
-                        <tr>
-                            <td><strong>Côncavo</strong></td>
-                            <td>
-                                Pode formar imagens reais ou virtuais,
-                                dependendo da posição do objeto.
-                            </td>
-                            <td>Espelhos odontológicos.</td>
-                        </tr>
-
-                        <tr>
-                            <td><strong>Convexo</strong></td>
-                            <td>
-                                Produz imagem virtual, direita e reduzida.
-                            </td>
-                            <td>Retrovisores e vigilância.</td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-            <div class="image-wrapper">
-
-                <img
-                    src="images (1).jpeg"
-                    alt="Tipos de espelhos e reflexão"
-                    loading="lazy">
-
-            </div>
-
-            <div class="info-grid">
-
-                <article class="info-box">
-
-                    <div class="icon">🪞</div>
-
-                    <h4>Espelho plano</h4>
-
-                    <p>
-                        Mantém o tamanho aparente do objeto.
-                    </p>
-
-                </article>
-
-                <article class="info-box">
-
-                    <div class="icon">🔎</div>
-
-                    <h4>Espelho côncavo</h4>
-
-                    <p>
-                        Pode concentrar raios luminosos.
-                    </p>
-
-                </article>
-
-                <article class="info-box">
-
-                    <div class="icon">🚗</div>
-
-                    <h4>Espelho convexo</h4>
-
-                    <p>
-                        Amplia o campo de visão.
-                    </p>
-
-                </article>
-
-            </div>
-
-            <div class="tab-navigation-footer">
-
-                <button
-                    class="nav-card-btn"
-                    onclick="switchTabByIndex(1)">
-                    ← Anterior
-                </button>
-
-                <button
-                    class="nav-card-btn"
-                    onclick="switchTabByIndex(3)">
-                    Próximo: Óptica do Olho →
-                </button>
-
-            </div>
-
-        </section>
-
-        <!-- ============================= -->
-        <!-- OLHO HUMANO -->
-        <!-- ============================= -->
-
-        <section
-            id="tab-olho"
-            class="card tab-content"
-            role="tabpanel"
-            tabindex="0">
-
-            <h2>Óptica do Olho Humano</h2>
-
-            <p class="section-lead">
-                A câmera fotográfica natural do corpo humano.
-            </p>
-
-            <p>
-                O olho humano é um sistema óptico complexo responsável
-                pela formação e interpretação de imagens.
-            </p>
-
-            <ul class="custom-list">
-
-                <li>
-                    <strong>Córnea:</strong>
-                    possui importante poder de convergência óptica.
-                </li>
-
-                <li>
-                    <strong>Cristalino:</strong>
-                    modifica sua curvatura para ajustar o foco.
-                </li>
-
-                <li>
-                    <strong>Íris:</strong>
-                    controla o tamanho da pupila.
-                </li>
-
-                <li>
-                    <strong>Retina:</strong>
-                    recebe a imagem formada pelo sistema óptico.
-                </li>
-
-                <li>
-                    <strong>Nervo óptico:</strong>
-                    transmite informações visuais ao cérebro.
-                </li>
-
-            </ul>
-
-            <h3>Ametropias e Correções</h3>
-
-            <div class="image-wrapper">
-
-                <img
-                    src="glaucoma-Saiba-mais-sobre-diagnóstico-precoce-de-doenças-da-visão.jpg"
-                    alt="Imagem relacionada ao sistema visual"
-                    loading="lazy">
-
-            </div>
-
-            <div class="table-container">
-
-                <table>
-
-                    <thead>
-
-                        <tr>
-                            <th>Condição</th>
-                            <th>Formação da imagem</th>
-                            <th>Correção</th>
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-
-                        <tr>
-                            <td><strong>Miopia</strong></td>
-                            <td>Antes da retina.</td>
-                            <td>Lente divergente.</td>
-                        </tr>
-
-                        <tr>
-                            <td><strong>Hipermetropia</strong></td>
-                            <td>Depois da retina.</td>
-                            <td>Lente convergente.</td>
-                        </tr>
-
-                        <tr>
-                            <td><strong>Astigmatismo</strong></td>
-                            <td>Focos diferentes.</td>
-                            <td>Lentes apropriadas.</td>
-                        </tr>
-
-                        <tr>
-                            <td><strong>Presbiopia</strong></td>
-                            <td>Dificuldade de acomodação.</td>
-                            <td>Lentes corretivas.</td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-            <div class="callout">
-
-                <strong>Acomodação visual:</strong>
-
-                é a capacidade do sistema óptico ocular de alterar
-                sua potência para focalizar objetos em diferentes distâncias.
-
-            </div>
-
-            <div class="tab-navigation-footer">
-
-                <button
-                    class="nav-card-btn"
-                    onclick="switchTabByIndex(2)">
-                    ← Anterior
-                </button>
-
-                <button
-                    class="nav-card-btn"
-                    onclick="switchTabByIndex(4)">
-                    Próximo: Trionda →
-                </button>
-
-            </div>
-
-        </section>
-
-        <!-- ============================= -->
-        <!-- TRIONDA -->
-        <!-- ============================= -->
-
-        <section
-            id="tab-trionda"
-            class="card highlight-card tab-content"
-            role="tabpanel"
-            tabindex="0">
-
-            <h2>Física da Trionda</h2>
-
-            <h3>Aerodinâmica</h3>
-
-            <p>
-                O comportamento de uma bola em movimento envolve forças
-                aerodinâmicas, resistência do ar, rotação e interação entre
-                a superfície da bola e o fluido ao redor.
-            </p>
-
-            <p>
-                A geometria dos painéis e a textura superficial podem
-                influenciar o escoamento do ar e o comportamento da trajetória.
-            </p>
-
-            <h3>Efeito Magnus</h3>
-
-            <p>
-                Quando uma bola gira enquanto se desloca pelo ar,
-                a diferença de velocidades do escoamento ao redor
-                de sua superfície pode produzir uma força lateral
-                conhecida como efeito Magnus.
-            </p>
-
-            <div class="formula-box">
-                $$F_M \propto \omega v$$
-            </div>
-
-            <p>
-                De forma simplificada, a intensidade do efeito depende
-                da rotação da bola e da velocidade de seu deslocamento,
-                entre outros fatores.
-            </p>
-
-            <h3>Tecnologia Conectada</h3>
-
-            <p>
-                Bolas esportivas modernas podem incorporar sensores
-                e sistemas de monitoramento capazes de registrar
-                dados de movimento.
-            </p>
-
-            <div class="info-grid">
-
-                <article class="info-box">
-
-                    <div class="icon">⚽</div>
-
-                    <h4>Movimento</h4>
-
-                    <p>
-                        Informações sobre posição, velocidade e rotação.
-                    </p>
-
-                </article>
-
-                <article class="info-box">
-
-                    <div class="icon">📡</div>
-
-                    <h4>Sensores</h4>
-
-                    <p>
-                        Podem registrar grandezas relacionadas ao movimento.
-                    </p>
-
-                </article>
-
-                <article class="info-box">
-
-                    <div class="icon">📊</div>
-
-                    <h4>Dados</h4>
-
-                    <p>
-                        A análise permite estudar o comportamento da bola.
-                    </p>
-
-                </article>
-
-            </div>
-
-
-            <!-- ============================= -->
-            <!-- VÍDEOS DA TRIONDA -->
-            <!-- ============================= -->
-
-            <h3>Vídeos sobre a Trionda</h3>
-
-            <p>
-                Confira os vídeos relacionados ao funcionamento,
-                movimento e tecnologia da bola.
-            </p>
-
-
-            <div class="video-wrapper">
-
-                <h4>Vídeo 1</h4>
-
-                <video
-                    controls
-                    preload="metadata"
-                    playsinline>
-
-                    <source
-                        src="VID-20260813-WA0006.mp4"
-                        type="video/mp4">
-
-                    Seu navegador não suporta a reprodução de vídeos HTML5.
-
-                </video>
+                <h4>
+                    Lupas
+                </h4>
 
                 <p>
-                    Vídeo relacionado à Física da Trionda.
+                    Produzem imagens virtuais ampliadas quando
+                    o objeto está dentro da distância focal.
                 </p>
 
-            </div>
+            </article>
+
+        </div>
 
 
-            <div class="video-wrapper">
-
-                <h4>Vídeo 2</h4>
-
-                <video
-                    controls
-                    preload="metadata"
-                    playsinline>
-
-                    <source
-                        src="VID-20260813-WA0008.mp4"
-                        type="video/mp4">
-
-                    Seu navegador não suporta a reprodução de vídeos HTML5.
-
-                </video>
-
-            </div>
-
-
-            <div class="video-wrapper">
-
-                <h4>Vídeo 3</h4>
-
-                <video
-                    controls
-                    preload="metadata"
-                    playsinline>
-
-                    <source
-                        src="VID-20260813-WA0016.mp4"
-                        type="video/mp4">
-
-                    Seu navegador não suporta a reprodução de vídeos HTML5.
-
-                </video>
-
-            </div>
-
-
-            <div class="video-wrapper">
-
-                <h4>Vídeo 4</h4>
-
-                <video
-                    controls
-                    preload="metadata"
-                    playsinline>
-
-                    <source
-                        src="VID-20260813-WA0018.mp4"
-                        type="video/mp4">
-
-                    Seu navegador não suporta a reprodução de vídeos HTML5.
-
-                </video>
-
-            </div>
-
-
-            <div class="video-wrapper">
-
-                <h4>Vídeo 5</h4>
-
-                <video
-                    controls
-                    preload="metadata"
-                    playsinline>
-
-                    <source
-                        src="VID-20260813-WA0019.mp4"
-                        type="video/mp4">
-
-                    Seu navegador não suporta a reprodução de vídeos HTML5.
-
-                </video>
-
-            </div>
-
-
-            <div class="video-wrapper">
-
-                <h4>Vídeo 6</h4>
-
-                <video
-                    controls
-                    preload="metadata"
-                    playsinline>
-
-                    <source
-                        src="VID-20260813-WA0020.mp4"
-                        type="video/mp4">
-
-                    Seu navegador não suporta a reprodução de vídeos HTML5.
-
-                </video>
-
-            </div>
-
-
-            <!-- ============================= -->
-            <!-- TERMOCOLAGEM -->
-            <!-- ============================= -->
-
-            <h3>Termocolagem</h3>
+        <div class="callout">
 
             <p>
-                Processos de fabricação que reduzem a presença de costuras
-                podem contribuir para maior uniformidade da superfície.
-            </p>
-
-            <div class="callout">
-
-                <strong>Importante:</strong>
-
-                características reais de uma bola dependem de seu projeto,
-                materiais, condições ambientais e especificações do fabricante.
-
-            </div>
-
-            <div class="tab-navigation-footer">
-
-                <button
-                    class="nav-card-btn"
-                    onclick="switchTabByIndex(3)">
-                    ← Anterior
-                </button>
-
-                <button
-                    class="nav-card-btn"
-                    onclick="switchTabByIndex(5)">
-                    Próximo: Fibra Óptica →
-                </button>
-
-            </div>
-
-        </section>
-
-        <!-- ============================= -->
-        <!-- FIBRA ÓPTICA -->
-        <!-- ============================= -->
-
-        <section
-            id="tab-fibra"
-            class="card fiber-card tab-content"
-            role="tabpanel"
-            tabindex="0">
-
-            <h2>Fibra Óptica</h2>
-
-            <p class="section-lead">
-                A Física que permite transmitir informações por meio da luz.
+                <strong>Imagens Reais:</strong>
+                são formadas pelo cruzamento efetivo dos
+                raios de luz. Podem ser projetadas sobre uma tela.
             </p>
 
             <p>
-                A fibra óptica é uma tecnologia de transmissão de informações
-                que utiliza pulsos de luz para transportar dados através
-                de filamentos muito finos de vidro ou plástico.
+                <strong>Imagens Virtuais:</strong>
+                surgem do prolongamento aparente dos raios
+                luminosos. Não podem ser projetadas diretamente
+                sobre uma tela.
             </p>
 
-            <p>
-                Seu funcionamento está diretamente relacionado aos princípios
-                da óptica, especialmente à
-                <strong>reflexão interna total da luz</strong>.
-            </p>
+        </div>
 
-            <div class="callout fiber-callout">
 
-                <strong>Ideia principal:</strong>
+        <h3>
+            Equação de Gauss
+        </h3>
 
-                a luz é conduzida pelo interior da fibra porque o núcleo
-                possui índice de refração maior que o da casca.
-                Dessa maneira, quando a luz atinge a interface entre
-                essas duas regiões em condições adequadas, ela sofre
-                reflexão interna total e continua viajando pelo interior
-                da fibra.
+        <p>
+            A posição das imagens formadas por lentes delgadas
+            e espelhos esféricos pode ser determinada pela relação:
+        </p>
 
-            </div>
 
-            <h3>O princípio físico</h3>
+        <div class="formula-box">
 
-            <h3>Reflexão Interna Total</h3>
+            $$\frac{1}{f} = \frac{1}{p} + \frac{1}{p'}$$
 
-            <p>
-                A reflexão interna total ocorre quando a luz passa de um
-                meio com maior índice de refração para outro com menor
-                índice de refração e atinge a interface com um ângulo
-                suficientemente grande em relação à normal.
-            </p>
+        </div>
 
-            <p>
-                Nesse caso, em vez de atravessar a interface e escapar
-                para o segundo meio, a luz é totalmente refletida
-                de volta para o meio de origem.
-            </p>
 
-            <p>
-                Dentro da fibra, esse fenômeno permite que o sinal luminoso
-                seja guiado ao longo de grandes distâncias.
-            </p>
+        <p>
+            Onde <strong>f</strong> representa a distância focal,
+            <strong>p</strong> representa a distância do objeto
+            e <strong>p'</strong> representa a distância da imagem.
+        </p>
 
-            <h3>Lei de Snell</h3>
 
-            <p>
-                O comportamento da luz ao passar de um meio para outro
-                pode ser descrito pela Lei de Snell:
-            </p>
+        <div class="tab-navigation-footer">
 
-            <div class="formula-box">
-                $$n_1\sin(\theta_1)=n_2\sin(\theta_2)$$
-            </div>
+            <button
+                class="nav-card-btn"
+                disabled>
 
-            <p>
-                Nessa equação, <strong>n₁</strong> e <strong>n₂</strong>
-                representam os índices de refração dos dois meios,
-                enquanto <strong>θ₁</strong> e <strong>θ₂</strong>
-                são os ângulos medidos em relação à normal.
-            </p>
+                ← Anterior
 
-            <h3>Ângulo Crítico</h3>
+            </button>
 
-            <p>
-                Existe um ângulo específico chamado
-                <strong>ângulo crítico</strong>. Quando a luz passa
-                do meio de maior índice de refração para o meio de menor
-                índice e o ângulo de incidência é maior que esse valor,
-                ocorre a reflexão interna total.
-            </p>
 
-            <p>
-                O ângulo crítico pode ser determinado por:
-            </p>
+            <button
+                class="nav-card-btn"
+                onclick="switchTabByIndex(1)">
 
-            <div class="formula-box">
-                $$\sin(\theta_c)=\frac{n_2}{n_1}$$
-            </div>
+                Próximo: Luz e Cores →
 
-            <p>
-                Essa expressão é válida para
-                <strong>n₁ &gt; n₂</strong>.
-            </p>
+            </button>
 
-            <div class="fiber-diagram">
+        </div>
 
-                <div class="fiber-visual">
+    </section>
 
-                    <h3 style="color:#65eaff; text-align:center;">
-                        Caminho da luz dentro da fibra
-                    </h3>
 
-                    <div class="fiber-cable">
+    <!-- ===================================================== -->
+    <!-- ABA 2 - LUZ E CORES -->
+    <!-- ===================================================== -->
 
-                        <div class="fiber-cladding">
+    <section
+        id="tab-cores"
+        class="card tab-content"
+        role="tabpanel"
+        tabindex="0">
 
-                            <div class="fiber-core">
+        <h2>
+            O Espetáculo da Luz e da Percepção
+        </h2>
 
-                                <div class="light-ray"></div>
+        <p>
+            A luz visível é uma pequena parte do espectro
+            eletromagnético. As diferentes frequências percebidas
+            pelo sistema visual humano estão associadas
+            às diferentes cores.
+        </p>
 
-                            </div>
+
+        <ul class="custom-list">
+
+            <li>
+                <strong>Maçã vermelha:</strong>
+                reflete principalmente as frequências associadas
+                ao vermelho e absorve grande parte das demais.
+            </li>
+
+            <li>
+                <strong>Objeto branco:</strong>
+                tende a refletir grande parte das frequências visíveis.
+            </li>
+
+            <li>
+                <strong>Objeto preto:</strong>
+                absorve grande parte da radiação visível incidente.
+            </li>
+
+        </ul>
+
+
+        <h3>
+            Síntese Aditiva
+        </h3>
+
+        <p>
+            A síntese aditiva é baseada na combinação de fontes
+            luminosas. Seus componentes fundamentais são vermelho,
+            verde e azul, formando o sistema RGB.
+        </p>
+
+
+        <div class="info-grid">
+
+            <article class="info-box">
+
+                <div class="icon">🔴</div>
+
+                <h4>
+                    Vermelho
+                </h4>
+
+                <p>
+                    Um dos componentes fundamentais do sistema RGB.
+                </p>
+
+            </article>
+
+
+            <article class="info-box">
+
+                <div class="icon">🟢</div>
+
+                <h4>
+                    Verde
+                </h4>
+
+                <p>
+                    Componente luminoso essencial para telas digitais.
+                </p>
+
+            </article>
+
+
+            <article class="info-box">
+
+                <div class="icon">🔵</div>
+
+                <h4>
+                    Azul
+                </h4>
+
+                <p>
+                    Completa o sistema RGB utilizado em dispositivos.
+                </p>
+
+            </article>
+
+        </div>
+
+
+        <h3>
+            Síntese Subtrativa
+        </h3>
+
+        <p>
+            A síntese subtrativa ocorre principalmente com pigmentos.
+            O sistema CMYK utiliza ciano, magenta, amarelo e preto.
+        </p>
+
+
+        <div class="image-wrapper">
+
+            <img
+                src="images.png"
+                alt="Esquema das sínteses aditiva e subtrativa de cores"
+                loading="lazy">
+
+        </div>
+
+
+        <div class="callout">
+
+            <strong>Curiosidade:</strong>
+
+            monitores emitem luz, enquanto uma folha de papel
+            normalmente depende da luz externa para que suas
+            cores sejam percebidas.
+
+        </div>
+
+
+        <div class="tab-navigation-footer">
+
+            <button
+                class="nav-card-btn"
+                onclick="switchTabByIndex(0)">
+
+                ← Anterior
+
+            </button>
+
+
+            <button
+                class="nav-card-btn"
+                onclick="switchTabByIndex(2)">
+
+                Próximo: Espelhos →
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===================================================== -->
+    <!-- ABA 3 - ESPELHOS -->
+    <!-- ===================================================== -->
+
+    <section
+        id="tab-espelhos"
+        class="card tab-content"
+        role="tabpanel"
+        tabindex="0">
+
+        <h2>
+            Espelhos e Reflexão
+        </h2>
+
+        <p class="section-lead">
+            O caminho que a luz faz para voltar.
+        </p>
+
+        <p>
+            A reflexão acontece quando a luz atinge uma superfície
+            e retorna ao meio de origem.
+        </p>
+
+
+        <p>
+            A principal relação da reflexão especular é:
+        </p>
+
+
+        <div class="formula-box">
+
+            $$\theta_i = \theta_r$$
+
+        </div>
+
+
+        <p>
+            O ângulo de incidência é igual ao ângulo de reflexão,
+            considerando os ângulos medidos em relação à reta normal.
+        </p>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Características</th>
+                        <th>Exemplo</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+                        <td>
+                            <strong>Plano</strong>
+                        </td>
+
+                        <td>
+                            Imagem virtual, direita e de mesmo tamanho.
+                        </td>
+
+                        <td>
+                            Espelhos domésticos.
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>
+                            <strong>Côncavo</strong>
+                        </td>
+
+                        <td>
+                            Pode formar imagens reais ou virtuais,
+                            dependendo da posição do objeto.
+                        </td>
+
+                        <td>
+                            Espelhos odontológicos.
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>
+                            <strong>Convexo</strong>
+                        </td>
+
+                        <td>
+                            Produz imagem virtual, direita e reduzida.
+                        </td>
+
+                        <td>
+                            Retrovisores e vigilância.
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <div class="image-wrapper">
+
+            <img
+                src="images (1).jpeg"
+                alt="Tipos de espelhos e reflexão"
+                loading="lazy">
+
+        </div>
+
+
+        <div class="info-grid">
+
+            <article class="info-box">
+
+                <div class="icon">🪞</div>
+
+                <h4>
+                    Espelho plano
+                </h4>
+
+                <p>
+                    Mantém o tamanho aparente do objeto.
+                </p>
+
+            </article>
+
+
+            <article class="info-box">
+
+                <div class="icon">🔎</div>
+
+                <h4>
+                    Espelho côncavo
+                </h4>
+
+                <p>
+                    Pode concentrar raios luminosos.
+                </p>
+
+            </article>
+
+
+            <article class="info-box">
+
+                <div class="icon">🚗</div>
+
+                <h4>
+                    Espelho convexo
+                </h4>
+
+                <p>
+                    Amplia o campo de visão.
+                </p>
+
+            </article>
+
+        </div>
+
+
+        <div class="tab-navigation-footer">
+
+            <button
+                class="nav-card-btn"
+                onclick="switchTabByIndex(1)">
+
+                ← Anterior
+
+            </button>
+
+
+            <button
+                class="nav-card-btn"
+                onclick="switchTabByIndex(3)">
+
+                Próximo: Óptica do Olho →
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===================================================== -->
+    <!-- ABA 4 - OLHO -->
+    <!-- ===================================================== -->
+
+    <section
+        id="tab-olho"
+        class="card tab-content"
+        role="tabpanel"
+        tabindex="0">
+
+        <h2>
+            Óptica do Olho Humano
+        </h2>
+
+        <p class="section-lead">
+            A câmera fotográfica natural do corpo humano.
+        </p>
+
+        <p>
+            O olho humano é um sistema óptico complexo responsável
+            pela formação e interpretação de imagens.
+        </p>
+
+
+        <ul class="custom-list">
+
+            <li>
+                <strong>Córnea:</strong>
+                possui importante poder de convergência óptica.
+            </li>
+
+            <li>
+                <strong>Cristalino:</strong>
+                modifica sua curvatura para ajustar o foco.
+            </li>
+
+            <li>
+                <strong>Íris:</strong>
+                controla o tamanho da pupila.
+            </li>
+
+            <li>
+                <strong>Retina:</strong>
+                recebe a imagem formada pelo sistema óptico.
+            </li>
+
+            <li>
+                <strong>Nervo óptico:</strong>
+                transmite informações visuais ao cérebro.
+            </li>
+
+        </ul>
+
+
+        <div class="image-wrapper">
+
+            <img
+                src="glaucoma-Saiba-mais-sobre-diagnóstico-precoce-de-doenças-da-visão.jpg"
+                alt="Imagem relacionada ao sistema visual"
+                loading="lazy">
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Condição</th>
+                        <th>Formação da imagem</th>
+                        <th>Correção</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+                        <td>
+                            <strong>Miopia</strong>
+                        </td>
+
+                        <td>
+                            Antes da retina.
+                        </td>
+
+                        <td>
+                            Lente divergente.
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>
+                            <strong>Hipermetropia</strong>
+                        </td>
+
+                        <td>
+                            Depois da retina.
+                        </td>
+
+                        <td>
+                            Lente convergente.
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>
+                            <strong>Astigmatismo</strong>
+                        </td>
+
+                        <td>
+                            Focos diferentes.
+                        </td>
+
+                        <td>
+                            Lentes apropriadas.
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td>
+                            <strong>Presbiopia</strong>
+                        </td>
+
+                        <td>
+                            Dificuldade de acomodação.
+                        </td>
+
+                        <td>
+                            Lentes corretivas.
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <div class="callout">
+
+            <strong>Acomodação visual:</strong>
+
+            é a capacidade do sistema óptico ocular de alterar
+            sua potência para focalizar objetos em diferentes distâncias.
+
+        </div>
+
+
+        <div class="tab-navigation-footer">
+
+            <button
+                class="nav-card-btn"
+                onclick="switchTabByIndex(2)">
+
+                ← Anterior
+
+            </button>
+
+
+            <button
+                class="nav-card-btn"
+                onclick="switchTabByIndex(4)">
+
+                Próximo: Trionda →
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===================================================== -->
+    <!-- ABA 5 - TRIONDA -->
+    <!-- ===================================================== -->
+
+    <section
+        id="tab-trionda"
+        class="card highlight-card tab-content"
+        role="tabpanel"
+        tabindex="0">
+
+        <h2>
+            Física da Trionda
+        </h2>
+
+
+        <h3>
+            Aerodinâmica
+        </h3>
+
+        <p>
+            O comportamento de uma bola em movimento envolve forças
+            aerodinâmicas, resistência do ar, rotação e interação
+            entre a superfície da bola e o fluido ao redor.
+        </p>
+
+
+        <p>
+            A geometria dos painéis e a textura superficial podem
+            influenciar o escoamento do ar e o comportamento da trajetória.
+        </p>
+
+
+        <h3>
+            Efeito Magnus
+        </h3>
+
+        <p>
+            Quando uma bola gira enquanto se desloca pelo ar,
+            a diferença de velocidades do escoamento ao redor
+            de sua superfície pode produzir uma força lateral
+            conhecida como efeito Magnus.
+        </p>
+
+
+        <div class="formula-box">
+
+            $$F_M \propto \omega v$$
+
+        </div>
+
+
+        <p>
+            De forma simplificada, a intensidade do efeito depende
+            da rotação da bola e da velocidade de seu deslocamento,
+            entre outros fatores.
+        </p>
+
+
+        <h3>
+            Tecnologia Conectada
+        </h3>
+
+        <p>
+            Bolas esportivas modernas podem incorporar sensores
+            e sistemas de monitoramento capazes de registrar
+            dados de movimento.
+        </p>
+
+
+        <div class="info-grid">
+
+            <article class="info-box">
+
+                <div class="icon">⚽</div>
+
+                <h4>
+                    Movimento
+                </h4>
+
+                <p>
+                    Informações sobre posição, velocidade e rotação.
+                </p>
+
+            </article>
+
+
+            <article class="info-box">
+
+                <div class="icon">📡</div>
+
+                <h4>
+                    Sensores
+                </h4>
+
+                <p>
+                    Podem registrar grandezas relacionadas ao movimento.
+                </p>
+
+            </article>
+
+
+            <article class="info-box">
+
+                <div class="icon">📊</div>
+
+                <h4>
+                    Dados
+                </h4>
+
+                <p>
+                    A análise permite estudar o comportamento da bola.
+                </p>
+
+            </article>
+
+        </div>
+
+
+        <h3>
+            Termocolagem
+        </h3>
+
+        <p>
+            Processos de fabricação que reduzem a presença de costuras
+            podem contribuir para maior uniformidade da superfície.
+        </p>
+
+
+        <div class="callout">
+
+            <strong>Importante:</strong>
+
+            características reais de uma bola dependem de seu projeto,
+            materiais, condições ambientais e especificações do fabricante.
+
+        </div>
+
+
+        <div class="tab-navigation-footer">
+
+            <button
+                class="nav-card-btn"
+                onclick="switchTabByIndex(3)">
+
+                ← Anterior
+
+            </button>
+
+
+            <button
+                class="nav-card-btn"
+                onclick="switchTabByIndex(5)">
+
+                Próximo: Fibra Óptica →
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===================================================== -->
+    <!-- ABA 6 - FIBRA ÓPTICA -->
+    <!-- ===================================================== -->
+
+    <section
+        id="tab-fibra"
+        class="card fiber-card tab-content"
+        role="tabpanel"
+        tabindex="0">
+
+        <h2>
+            Fibra Óptica
+        </h2>
+
+
+        <p class="section-lead">
+            A Física que permite transmitir informações por meio da luz.
+        </p>
+
+
+        <p>
+            A fibra óptica é uma tecnologia de transmissão de informações
+            que utiliza pulsos de luz para transportar dados através
+            de filamentos muito finos de vidro ou plástico.
+        </p>
+
+
+        <p>
+            Seu funcionamento está diretamente relacionado aos princípios
+            da óptica, especialmente à
+            <strong>reflexão interna total da luz</strong>.
+        </p>
+
+
+        <div class="callout fiber-callout">
+
+            <strong>Ideia principal:</strong>
+
+            a luz é conduzida pelo interior da fibra porque o núcleo
+            possui índice de refração maior que o da casca.
+            Dessa maneira, quando a luz atinge a interface entre
+            essas duas regiões em condições adequadas, ela sofre
+            reflexão interna total e continua viajando pelo interior
+            da fibra.
+
+        </div>
+
+
+        <h3>
+            Reflexão Interna Total
+        </h3>
+
+        <p>
+            A reflexão interna total ocorre quando a luz passa de um
+            meio com maior índice de refração para outro com menor
+            índice de refração e atinge a interface com um ângulo
+            suficientemente grande em relação à normal.
+        </p>
+
+
+        <p>
+            Nesse caso, em vez de atravessar a interface e escapar
+            para o segundo meio, a luz é totalmente refletida
+            de volta para o meio de origem.
+        </p>
+
+
+        <p>
+            Dentro da fibra, esse fenômeno permite que o sinal luminoso
+            seja guiado ao longo de grandes distâncias.
+        </p>
+
+
+        <h3>
+            Lei de Snell
+        </h3>
+
+        <p>
+            O comportamento da luz ao passar de um meio para outro
+            pode ser descrito pela Lei de Snell:
+        </p>
+
+
+        <div class="formula-box">
+
+            $$n_1\sin(\theta_1)=n_2\sin(\theta_2)$$
+
+        </div>
+
+
+        <p>
+            Nessa equação, <strong>n₁</strong> e <strong>n₂</strong>
+            representam os índices de refração dos dois meios,
+            enquanto <strong>θ₁</strong> e <strong>θ₂</strong>
+            são os ângulos medidos em relação à normal.
+        </p>
+
+
+        <h3>
+            Ângulo Crítico
+        </h3>
+
+        <p>
+            Existe um ângulo específico chamado
+            <strong>ângulo crítico</strong>. Quando a luz passa
+            do meio de maior índice de refração para o meio de menor
+            índice e o ângulo de incidência é maior que esse valor,
+            ocorre a reflexão interna total.
+        </p>
+
+
+        <div class="formula-box">
+
+            $$\sin(\theta_c)=\frac{n_2}{n_1}$$
+
+        </div>
+
+
+        <p>
+            Essa expressão é válida para
+            <strong>n₁ &gt; n₂</strong>.
+        </p>
+
+
+        <div class="fiber-diagram">
+
+            <div class="fiber-visual">
+
+                <h3 style="color:#65eaff; text-align:center;">
+                    Caminho da luz dentro da fibra
+                </h3>
+
+
+                <div class="fiber-cable">
+
+                    <div class="fiber-cladding">
+
+                        <div class="fiber-core">
+
+                            <div class="light-ray"></div>
 
                         </div>
 
                     </div>
 
-                    <div class="diagram-labels">
+                </div>
 
-                        <div class="diagram-label">
 
-                            <strong>Núcleo:</strong>
+                <div class="diagram-labels">
 
-                            região central onde a luz é conduzida.
+                    <div class="diagram-label">
 
-                        </div>
+                        <strong>Núcleo:</strong>
 
-                        <div class="diagram-label">
+                        região central onde a luz é conduzida.
 
-                            <strong>Casca:</strong>
+                    </div>
 
-                            camada com menor índice de refração que
-                            auxilia no confinamento da luz.
 
-                        </div>
+                    <div class="diagram-label">
+
+                        <strong>Casca:</strong>
+
+                        camada com menor índice de refração
+                        que auxilia no confinamento da luz.
 
                     </div>
 
@@ -1925,446 +2136,738 @@
 
             </div>
 
-            <h3>Estrutura da Fibra Óptica</h3>
+        </div>
 
-            <p>
-                Para que o princípio da reflexão interna total funcione,
-                a fibra óptica possui principalmente duas regiões ópticas:
-                o <strong>núcleo</strong> e a <strong>casca</strong>.
-            </p>
 
-            <div class="info-grid">
+        <h3>
+            Estrutura da Fibra Óptica
+        </h3>
 
-                <article class="info-box">
+        <p>
+            Para que o princípio da reflexão interna total funcione,
+            a fibra óptica possui principalmente duas regiões ópticas:
+            o <strong>núcleo</strong> e a <strong>casca</strong>.
+        </p>
 
-                    <div class="icon">🔵</div>
 
-                    <h4>Núcleo (Core)</h4>
+        <div class="info-grid">
 
-                    <p>
-                        É a região central da fibra por onde a luz é transmitida.
-                        Possui um índice de refração maior do que o da casca.
-                    </p>
+            <article class="info-box">
 
-                </article>
+                <div class="icon">🔵</div>
 
-                <article class="info-box">
+                <h4>
+                    Núcleo (Core)
+                </h4>
 
-                    <div class="icon">⚪</div>
+                <p>
+                    É a região central da fibra por onde a luz é transmitida.
+                    Possui um índice de refração maior do que o da casca.
+                </p>
 
-                    <h4>Casca (Cladding)</h4>
+            </article>
 
-                    <p>
-                        É a camada que envolve o núcleo e possui índice
-                        de refração menor. Essa diferença ajuda a manter
-                        a luz confinada no núcleo.
-                    </p>
 
-                </article>
+            <article class="info-box">
 
-                <article class="info-box">
+                <div class="icon">⚪</div>
 
-                    <div class="icon">🛡️</div>
+                <h4>
+                    Casca (Cladding)
+                </h4>
 
-                    <h4>Revestimento</h4>
+                <p>
+                    É a camada que envolve o núcleo e possui índice
+                    de refração menor.
+                </p>
 
-                    <p>
-                        Em um cabo real existem ainda camadas de proteção
-                        que ajudam a proteger a fibra contra impactos,
-                        umidade, tração e outros danos.
-                    </p>
+            </article>
 
-                </article>
 
-            </div>
+            <article class="info-box">
 
-            <h3>Como a luz permanece dentro da fibra?</h3>
+                <div class="icon">🛡️</div>
 
-            <p>
-                Imagine um feixe luminoso entrando no núcleo da fibra
-                com uma direção adequada. Ao atingir a interface entre
-                o núcleo e a casca, o feixe encontra uma região com
-                menor índice de refração.
-            </p>
+                <h4>
+                    Revestimento
+                </h4>
 
-            <p>
-                Se o ângulo de incidência for maior que o ângulo crítico,
-                a luz não atravessa a interface. Ela é refletida novamente
-                para o interior do núcleo.
-            </p>
+                <p>
+                    Em um cabo real existem ainda camadas de proteção
+                    que ajudam a proteger a fibra.
+                </p>
 
-            <p>
-                Esse processo acontece sucessivamente, fazendo com que
-                a luz seja conduzida ao longo da fibra.
-            </p>
+            </article>
 
-            <div class="callout fiber-callout">
+        </div>
 
-                <strong>Em resumo:</strong>
 
-                a fibra óptica funciona como um caminho para a luz.
-                O núcleo possui maior índice de refração e a casca possui
-                menor índice de refração. Essa diferença, combinada com
-                o ângulo adequado de incidência, permite a reflexão interna
-                total e a transmissão do sinal luminoso.
+        <h3>
+            Aplicações da Fibra Óptica
+        </h3>
 
-            </div>
 
-            <h3>Por que utilizar luz para transmitir dados?</h3>
+        <ul class="custom-list">
 
-            <p>
-                A transmissão óptica apresenta vantagens importantes
-                em sistemas de comunicação. Os sinais podem transportar
-                grandes quantidades de informação e as fibras são pouco
-                suscetíveis a interferências eletromagnéticas externas.
-            </p>
+            <li>
+                <strong>Internet:</strong>
+                transmissão de dados em redes de alta velocidade.
+            </li>
 
-            <div class="info-grid">
+            <li>
+                <strong>Telefonia:</strong>
+                comunicação de voz e dados.
+            </li>
 
-                <article class="info-box">
+            <li>
+                <strong>Televisão:</strong>
+                distribuição de sinais digitais.
+            </li>
 
-                    <div class="icon">🚀</div>
+            <li>
+                <strong>Medicina:</strong>
+                utilização em equipamentos de visualização
+                e procedimentos.
+            </li>
 
-                    <h4>Alta capacidade</h4>
+            <li>
+                <strong>Indústria:</strong>
+                inspeção e transmissão de informações.
+            </li>
 
-                    <p>
-                        A tecnologia permite transmitir grandes quantidades
-                        de dados por meio de sinais luminosos.
-                    </p>
+        </ul>
 
-                </article>
 
-                <article class="info-box">
+        <div class="quiz">
 
-                    <div class="icon">📡</div>
+            <div class="quiz-question">
 
-                    <h4>Comunicação</h4>
-
-                    <p>
-                        É utilizada em redes de internet, telefonia,
-                        televisão e sistemas de comunicação.
-                    </p>
-
-                </article>
-
-                <article class="info-box">
-
-                    <div class="icon">⚡</div>
-
-                    <h4>Baixa interferência</h4>
-
-                    <p>
-                        A transmissão por luz não sofre os mesmos efeitos
-                        de interferência eletromagnética encontrados
-                        em muitos cabos metálicos.
-                    </p>
-
-                </article>
+                Desafio rápido: qual fenômeno físico permite
+                que a luz permaneça confinada no núcleo
+                da fibra óptica?
 
             </div>
 
-            <h3>Aplicações da Fibra Óptica</h3>
 
-            <ul class="custom-list">
-
-                <li>
-                    <strong>Internet:</strong>
-                    transmissão de dados em redes de alta velocidade.
-                </li>
-
-                <li>
-                    <strong>Telefonia:</strong>
-                    comunicação de voz e dados.
-                </li>
-
-                <li>
-                    <strong>Televisão:</strong>
-                    distribuição de sinais digitais.
-                </li>
-
-                <li>
-                    <strong>Medicina:</strong>
-                    utilização em equipamentos de visualização
-                    e procedimentos que empregam fibras ópticas.
-                </li>
-
-                <li>
-                    <strong>Indústria:</strong>
-                    inspeção e transmissão de informações em ambientes
-                    onde cabos ópticos apresentam vantagens.
-                </li>
-
-            </ul>
-
-            <h3>Resumo do funcionamento</h3>
-
-            <div class="table-container">
-
-                <table>
-
-                    <thead>
-
-                        <tr>
-                            <th>Elemento</th>
-                            <th>Função</th>
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-
-                        <tr>
-                            <td><strong>Luz</strong></td>
-                            <td>
-                                Transporta a informação através da fibra.
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td><strong>Núcleo</strong></td>
-                            <td>
-                                Região central por onde a luz se propaga.
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td><strong>Casca</strong></td>
-                            <td>
-                                Possui menor índice de refração e auxilia
-                                no confinamento da luz.
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td><strong>Reflexão interna total</strong></td>
-                            <td>
-                                Mantém a luz sendo refletida dentro do núcleo.
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td><strong>Lei de Snell</strong></td>
-                            <td>
-                                Descreve a relação entre os ângulos
-                                e os índices de refração.
-                            </td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-            <div class="quiz">
-
-                <div class="quiz-question">
-                    Desafio rápido: qual fenômeno físico permite que a luz
-                    permaneça confinada no núcleo da fibra óptica?
-                </div>
-
-                <div class="quiz-options">
-
-                    <button
-                        class="quiz-option"
-                        onclick="answerFiberQuiz(this, false)">
-                        A) Difração
-                    </button>
-
-                    <button
-                        class="quiz-option"
-                        onclick="answerFiberQuiz(this, true)">
-                        B) Reflexão interna total
-                    </button>
-
-                    <button
-                        class="quiz-option"
-                        onclick="answerFiberQuiz(this, false)">
-                        C) Polarização
-                    </button>
-
-                    <button
-                        class="quiz-option"
-                        onclick="answerFiberQuiz(this, false)">
-                        D) Efeito Doppler
-                    </button>
-
-                </div>
-
-                <div
-                    class="quiz-result"
-                    id="fiberQuizResult"
-                    aria-live="polite">
-                </div>
-
-            </div>
-
-            <div class="tab-navigation-footer">
+            <div class="quiz-options">
 
                 <button
-                    class="nav-card-btn"
-                    onclick="switchTabByIndex(4)">
-                    ← Anterior
+                    class="quiz-option"
+                    onclick="answerFiberQuiz(this, false)">
+
+                    A) Difração
+
                 </button>
 
+
                 <button
-                    class="nav-card-btn"
-                    disabled>
-                    Fim do conteúdo
+                    class="quiz-option"
+                    onclick="answerFiberQuiz(this, true)">
+
+                    B) Reflexão interna total
+
+                </button>
+
+
+                <button
+                    class="quiz-option"
+                    onclick="answerFiberQuiz(this, false)">
+
+                    C) Polarização
+
+                </button>
+
+
+                <button
+                    class="quiz-option"
+                    onclick="answerFiberQuiz(this, false)">
+
+                    D) Efeito Doppler
+
                 </button>
 
             </div>
 
-        </section>
+
+            <div
+                class="quiz-result"
+                id="fiberQuizResult"
+                aria-live="polite">
+            </div>
+
+        </div>
+
+
+        <div class="tab-navigation-footer">
+
+            <button
+                class="nav-card-btn"
+                onclick="switchTabByIndex(4)">
+
+                ← Anterior
+
+            </button>
+
+
+            <button
+                class="nav-card-btn"
+                onclick="switchTabByIndex(6)">
+
+                Próximo: Vídeos →
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ===================================================== -->
+    <!-- ABA 7 - VÍDEOS -->
+    <!-- ===================================================== -->
+
+    <section
+        id="tab-videos"
+        class="card video-card tab-content"
+        role="tabpanel"
+        tabindex="0">
+
+        <h2>
+            🎬 Vídeos da Física da Trionda
+        </h2>
+
+
+        <p class="section-lead">
+            Confira os seis vídeos relacionados ao projeto.
+        </p>
+
+
+        <p>
+            Nesta aba estão reunidos os vídeos utilizados
+            no Projeto Integrador. Você pode assistir a cada
+            um deles individualmente pelos controles abaixo.
+        </p>
+
 
         <!-- ============================= -->
-        <!-- RODAPÉ -->
+        <!-- VÍDEO 1 -->
         <!-- ============================= -->
 
-        <footer class="footer">
+        <div class="video-wrapper">
+
+            <h4>
+                🎬 Vídeo 1
+            </h4>
+
+            <video
+                controls
+                preload="metadata"
+                playsinline>
+
+                <source
+                    src="VID-20260813-WA0006.mp4"
+                    type="video/mp4">
+
+                Seu navegador não suporta a reprodução
+                de vídeos HTML5.
+
+            </video>
 
             <p>
-                <strong>Projeto Integrador IFA</strong>
+                Vídeo relacionado à Física da Trionda.
             </p>
 
-            <p>
-                A Física Projeta Tudo o Que Você Vê
-            </p>
-
-            <p>
-                Física • Óptica • Fibra Óptica • Tecnologia do Esporte
-            </p>
-
-            <p>
-                © 2026 — Projeto educacional
-            </p>
-
-        </footer>
-
-    </main>
-
-    <button
-        class="back-top"
-        id="backTop"
-        aria-label="Voltar ao topo"
-        title="Voltar ao topo">
-        ↑
-    </button>
+        </div>
 
 
-    <script>
+        <!-- ============================= -->
+        <!-- VÍDEO 2 -->
+        <!-- ============================= -->
 
-        const tabButtons =
-            document.querySelectorAll('.tab-btn');
+        <div class="video-wrapper">
 
-        const tabContents =
-            document.querySelectorAll('.tab-content');
+            <h4>
+                🎬 Vídeo 2
+            </h4>
 
-        const searchInput =
-            document.getElementById('searchInput');
+            <video
+                controls
+                preload="metadata"
+                playsinline>
 
-        const themeButton =
-            document.getElementById('themeButton');
+                <source
+                    src="VID-20260813-WA0008.mp4"
+                    type="video/mp4">
 
-        const progressBar =
-            document.getElementById('progressBar');
+                Seu navegador não suporta a reprodução
+                de vídeos HTML5.
 
-        const backTop =
-            document.getElementById('backTop');
+            </video>
 
-        const statusMessage =
-            document.getElementById('statusMessage');
+        </div>
 
 
-        /* ============================= */
-        /* SISTEMA DE ABAS */
-        /* ============================= */
+        <!-- ============================= -->
+        <!-- VÍDEO 3 -->
+        <!-- ============================= -->
 
-        function openTab(evt, tabId) {
+        <div class="video-wrapper">
 
-            tabContents.forEach(content => {
+            <h4>
+                🎬 Vídeo 3
+            </h4>
 
-                content.classList.remove('active');
+            <video
+                controls
+                preload="metadata"
+                playsinline>
 
-            });
+                <source
+                    src="VID-20260813-WA0016.mp4"
+                    type="video/mp4">
 
-            tabButtons.forEach(button => {
+                Seu navegador não suporta a reprodução
+                de vídeos HTML5.
 
-                button.classList.remove('active');
+            </video>
 
-                button.setAttribute(
-                    'aria-selected',
-                    'false'
-                );
+        </div>
 
-                button.setAttribute(
-                    'tabindex',
-                    '-1'
-                );
 
-            });
+        <!-- ============================= -->
+        <!-- VÍDEO 4 -->
+        <!-- ============================= -->
 
-            const targetTab =
-                document.getElementById(tabId);
+        <div class="video-wrapper">
 
-            if (!targetTab) {
-                return;
-            }
+            <h4>
+                🎬 Vídeo 4
+            </h4>
 
-            targetTab.classList.add('active');
+            <video
+                controls
+                preload="metadata"
+                playsinline>
 
-            const selectedButton = evt
-                ? evt.currentTarget
-                : document.querySelector(
-                    `[aria-controls="${tabId}"]`
-                );
+                <source
+                    src="VID-20260813-WA0018.mp4"
+                    type="video/mp4">
 
-            if (selectedButton) {
+                Seu navegador não suporta a reprodução
+                de vídeos HTML5.
 
-                selectedButton.classList.add('active');
+            </video>
 
-                selectedButton.setAttribute(
-                    'aria-selected',
-                    'true'
-                );
+        </div>
 
-                selectedButton.setAttribute(
-                    'tabindex',
-                    '0'
-                );
 
-                selectedButton.focus();
+        <!-- ============================= -->
+        <!-- VÍDEO 5 -->
+        <!-- ============================= -->
 
-            }
+        <div class="video-wrapper">
 
-            targetTab.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+            <h4>
+                🎬 Vídeo 5
+            </h4>
 
-            if (window.MathJax) {
+            <video
+                controls
+                preload="metadata"
+                playsinline>
 
-                MathJax.typesetPromise([
-                    targetTab
-                ]);
+                <source
+                    src="VID-20260813-WA0019.mp4"
+                    type="video/mp4">
 
-            }
+                Seu navegador não suporta a reprodução
+                de vídeos HTML5.
 
-            updateProgress();
+            </video>
+
+        </div>
+
+
+        <!-- ============================= -->
+        <!-- VÍDEO 6 -->
+        <!-- ============================= -->
+
+        <div class="video-wrapper">
+
+            <h4>
+                🎬 Vídeo 6
+            </h4>
+
+            <video
+                controls
+                preload="metadata"
+                playsinline>
+
+                <source
+                    src="VID-20260813-WA0020.mp4"
+                    type="video/mp4">
+
+                Seu navegador não suporta a reprodução
+                de vídeos HTML5.
+
+            </video>
+
+        </div>
+
+
+        <div class="callout">
+
+            <strong>Observação:</strong>
+
+            para que os vídeos sejam reproduzidos,
+            os arquivos MP4 precisam estar na mesma pasta
+            do arquivo HTML, utilizando exatamente os nomes
+            indicados no código.
+
+        </div>
+
+
+        <div class="tab-navigation-footer">
+
+            <button
+                class="nav-card-btn"
+                onclick="switchTabByIndex(5)">
+
+                ← Anterior: Fibra Óptica
+
+            </button>
+
+
+            <button
+                class="nav-card-btn"
+                disabled>
+
+                Fim do conteúdo
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- RODAPÉ -->
+    <!-- ============================= -->
+
+    <footer class="footer">
+
+        <p>
+            <strong>
+                Projeto Integrador IFA
+            </strong>
+        </p>
+
+        <p>
+            A Física Projeta Tudo o Que Você Vê
+        </p>
+
+        <p>
+            Física • Óptica • Fibra Óptica • Tecnologia do Esporte
+        </p>
+
+        <p>
+            © 2026 — Projeto educacional
+        </p>
+
+    </footer>
+
+</main>
+
+
+<!-- ============================= -->
+<!-- BOTÃO VOLTAR AO TOPO -->
+<!-- ============================= -->
+
+<button
+    class="back-top"
+    id="backTop"
+    aria-label="Voltar ao topo"
+    title="Voltar ao topo">
+
+    ↑
+
+</button>
+
+
+<script>
+
+    /* ============================= */
+    /* ELEMENTOS */
+    /* ============================= */
+
+    const tabButtons =
+        document.querySelectorAll('.tab-btn');
+
+    const tabContents =
+        document.querySelectorAll('.tab-content');
+
+    const searchInput =
+        document.getElementById('searchInput');
+
+    const themeButton =
+        document.getElementById('themeButton');
+
+    const progressBar =
+        document.getElementById('progressBar');
+
+    const backTop =
+        document.getElementById('backTop');
+
+    const statusMessage =
+        document.getElementById('statusMessage');
+
+
+    /* ============================= */
+    /* SISTEMA DE ABAS */
+    /* ============================= */
+
+    function openTab(evt, tabId) {
+
+        tabContents.forEach(content => {
+
+            content.classList.remove('active');
+
+        });
+
+
+        tabButtons.forEach(button => {
+
+            button.classList.remove('active');
+
+            button.setAttribute(
+                'aria-selected',
+                'false'
+            );
+
+            button.setAttribute(
+                'tabindex',
+                '-1'
+            );
+
+        });
+
+
+        const targetTab =
+            document.getElementById(tabId);
+
+
+        if (!targetTab) {
+            return;
+        }
+
+
+        targetTab.classList.add('active');
+
+
+        const selectedButton = evt
+            ? evt.currentTarget
+            : document.querySelector(
+                `[aria-controls="${tabId}"]`
+            );
+
+
+        if (selectedButton) {
+
+            selectedButton.classList.add('active');
+
+            selectedButton.setAttribute(
+                'aria-selected',
+                'true'
+            );
+
+            selectedButton.setAttribute(
+                'tabindex',
+                '0'
+            );
 
         }
 
 
-        function switchTabByIndex(index) {
+        targetTab.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
 
-            if (
-                index < 0 ||
-                index >= tabButtons.length
-            ) {
-                return;
+
+        if (window.MathJax) {
+
+            MathJax.typesetPromise([
+                targetTab
+            ]);
+
+        }
+
+
+        updateProgress();
+
+    }
+
+
+    /* ============================= */
+    /* TROCAR ABA PELO ÍNDICE */
+    /* ============================= */
+
+    function switchTabByIndex(index) {
+
+        if (
+            index < 0 ||
+            index >= tabButtons.length
+        ) {
+            return;
+        }
+
+
+        tabButtons[index].click();
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+
+    }
+
+
+    /* ============================= */
+    /* TECLADO DAS ABAS */
+    /* ============================= */
+
+    tabButtons.forEach((button, index) => {
+
+        button.addEventListener(
+            'keydown',
+            event => {
+
+                let newIndex = index;
+
+
+                if (event.key === 'ArrowRight') {
+
+                    newIndex =
+                        (index + 1) %
+                        tabButtons.length;
+
+                }
+
+
+                if (event.key === 'ArrowLeft') {
+
+                    newIndex =
+                        (
+                            index - 1 +
+                            tabButtons.length
+                        ) %
+                        tabButtons.length;
+
+                }
+
+
+                if (event.key === 'Home') {
+
+                    newIndex = 0;
+
+                }
+
+
+                if (event.key === 'End') {
+
+                    newIndex =
+                        tabButtons.length - 1;
+
+                }
+
+
+                if (newIndex !== index) {
+
+                    event.preventDefault();
+
+                    tabButtons[newIndex].click();
+
+                }
+
+            }
+        );
+
+    });
+
+
+    /* ============================= */
+    /* BARRA DE PROGRESSO */
+    /* ============================= */
+
+    function updateProgress() {
+
+        const scrollTop =
+            window.scrollY ||
+            document.documentElement.scrollTop;
+
+
+        const documentHeight =
+            document.documentElement.scrollHeight -
+            window.innerHeight;
+
+
+        if (documentHeight <= 0) {
+
+            progressBar.style.width =
+                '100%';
+
+            return;
+
+        }
+
+
+        const percentage =
+            (scrollTop / documentHeight) * 100;
+
+
+        progressBar.style.width =
+            `${Math.min(
+                100,
+                Math.max(0, percentage)
+            )}%`;
+
+    }
+
+
+    window.addEventListener(
+        'scroll',
+        () => {
+
+            updateProgress();
+
+
+            if (window.scrollY > 400) {
+
+                backTop.classList.add(
+                    'visible'
+                );
+
+            } else {
+
+                backTop.classList.remove(
+                    'visible'
+                );
+
             }
 
-            tabButtons[index].click();
+        }
+    );
+
+
+    /* ============================= */
+    /* VOLTAR AO TOPO */
+    /* ============================= */
+
+    backTop.addEventListener(
+        'click',
+        () => {
 
             window.scrollTo({
                 top: 0,
@@ -2372,531 +2875,430 @@
             });
 
         }
+    );
 
 
-        /* ============================= */
-        /* TECLADO DAS ABAS */
-        /* ============================= */
+    /* ============================= */
+    /* MODO ESCURO */
+    /* ============================= */
 
-        tabButtons.forEach((button, index) => {
+    themeButton.addEventListener(
+        'click',
+        () => {
 
-            button.addEventListener(
-                'keydown',
-                event => {
-
-                    let newIndex = index;
-
-                    if (event.key === 'ArrowRight') {
-
-                        newIndex =
-                            (index + 1) %
-                            tabButtons.length;
-
-                    }
-
-                    if (event.key === 'ArrowLeft') {
-
-                        newIndex =
-                            (
-                                index - 1 +
-                                tabButtons.length
-                            ) %
-                            tabButtons.length;
-
-                    }
-
-                    if (event.key === 'Home') {
-                        newIndex = 0;
-                    }
-
-                    if (event.key === 'End') {
-
-                        newIndex =
-                            tabButtons.length - 1;
-
-                    }
-
-                    if (newIndex !== index) {
-
-                        event.preventDefault();
-
-                        tabButtons[newIndex].click();
-
-                    }
-
-                }
+            document.body.classList.toggle(
+                'dark-mode'
             );
 
-        });
+
+            const darkMode =
+                document.body.classList.contains(
+                    'dark-mode'
+                );
 
 
-        /* ============================= */
-        /* BARRA DE PROGRESSO */
-        /* ============================= */
+            themeButton.textContent =
+                darkMode
+                    ? '☀️ Modo claro'
+                    : '🌙 Modo escuro';
 
-        function updateProgress() {
 
-            const scrollTop =
-                window.scrollY ||
-                document.documentElement.scrollTop;
+            localStorage.setItem(
+                'ifa-theme',
+                darkMode
+                    ? 'dark'
+                    : 'light'
+            );
 
-            const documentHeight =
-                document.documentElement.scrollHeight -
-                window.innerHeight;
+        }
+    );
 
-            if (documentHeight <= 0) {
 
-                progressBar.style.width = '100%';
+    function loadTheme() {
+
+        const savedTheme =
+            localStorage.getItem(
+                'ifa-theme'
+            );
+
+
+        if (savedTheme === 'dark') {
+
+            document.body.classList.add(
+                'dark-mode'
+            );
+
+
+            themeButton.textContent =
+                '☀️ Modo claro';
+
+        }
+
+    }
+
+
+    /* ============================= */
+    /* MENSAGEM DE STATUS */
+    /* ============================= */
+
+    function showStatus(message) {
+
+        statusMessage.textContent =
+            message;
+
+
+        statusMessage.classList.add(
+            'visible'
+        );
+
+
+        clearTimeout(
+            showStatus.timer
+        );
+
+
+        showStatus.timer =
+            setTimeout(() => {
+
+                statusMessage.classList.remove(
+                    'visible'
+                );
+
+            }, 3000);
+
+    }
+
+
+    /* ============================= */
+    /* PESQUISA */
+    /* ============================= */
+
+    searchInput.addEventListener(
+        'input',
+        () => {
+
+            const query =
+                searchInput.value
+                    .trim()
+                    .toLowerCase();
+
+
+            if (!query) {
+
+                tabButtons.forEach(
+                    button => {
+
+                        button.classList.remove(
+                            'hidden'
+                        );
+
+                    }
+                );
+
+
+                statusMessage.classList.remove(
+                    'visible'
+                );
+
 
                 return;
 
             }
 
-            const percentage =
-                (scrollTop / documentHeight) * 100;
 
-            progressBar.style.width =
-                `${Math.min(
-                    100,
-                    Math.max(0, percentage)
-                )}%`;
-
-        }
+            let found = false;
 
 
-        window.addEventListener(
-            'scroll',
-            () => {
+            tabButtons.forEach(
+                button => {
 
-                updateProgress();
-
-                if (window.scrollY > 400) {
-
-                    backTop.classList.add(
-                        'visible'
-                    );
-
-                } else {
-
-                    backTop.classList.remove(
-                        'visible'
-                    );
-
-                }
-
-            }
-        );
-
-
-        /* ============================= */
-        /* BOTÃO VOLTAR AO TOPO */
-        /* ============================= */
-
-        backTop.addEventListener(
-            'click',
-            () => {
-
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-
-            }
-        );
-
-
-        /* ============================= */
-        /* MODO ESCURO */
-        /* ============================= */
-
-        themeButton.addEventListener(
-            'click',
-            () => {
-
-                document.body.classList.toggle(
-                    'dark-mode'
-                );
-
-                const darkMode =
-                    document.body.classList.contains(
-                        'dark-mode'
-                    );
-
-                themeButton.textContent =
-                    darkMode
-                        ? '☀️ Modo claro'
-                        : '🌙 Modo escuro';
-
-                localStorage.setItem(
-                    'ifa-theme',
-                    darkMode
-                        ? 'dark'
-                        : 'light'
-                );
-
-            }
-        );
-
-
-        function loadTheme() {
-
-            const savedTheme =
-                localStorage.getItem(
-                    'ifa-theme'
-                );
-
-            if (savedTheme === 'dark') {
-
-                document.body.classList.add(
-                    'dark-mode'
-                );
-
-                themeButton.textContent =
-                    '☀️ Modo claro';
-
-            }
-
-        }
-
-
-        /* ============================= */
-        /* MENSAGEM DE STATUS */
-        /* ============================= */
-
-        function showStatus(message) {
-
-            statusMessage.textContent =
-                message;
-
-            statusMessage.classList.add(
-                'visible'
-            );
-
-            clearTimeout(
-                showStatus.timer
-            );
-
-            showStatus.timer =
-                setTimeout(() => {
-
-                    statusMessage.classList.remove(
-                        'visible'
-                    );
-
-                }, 3000);
-
-        }
-
-
-        /* ============================= */
-        /* PESQUISA */
-        /* ============================= */
-
-        searchInput.addEventListener(
-            'input',
-            () => {
-
-                const query =
-                    searchInput.value
-                        .trim()
-                        .toLowerCase();
-
-                if (!query) {
-
-                    tabButtons.forEach(
-                        button => {
-
-                            button.classList.remove(
-                                'hidden'
-                            );
-
-                        }
-                    );
-
-                    statusMessage.classList.remove(
-                        'visible'
-                    );
-
-                    return;
-
-                }
-
-                let found = false;
-
-                tabButtons.forEach(
-                    button => {
-
-                        const tabId =
-                            button.getAttribute(
-                                'aria-controls'
-                            );
-
-                        const content =
-                            document.getElementById(
-                                tabId
-                            );
-
-                        const text =
-                            `${button.textContent}
-                            ${content.textContent}`
-                            .toLowerCase();
-
-                        const matches =
-                            text.includes(query);
-
-                        button.classList.toggle(
-                            'hidden',
-                            !matches
+                    const tabId =
+                        button.getAttribute(
+                            'aria-controls'
                         );
 
-                        if (matches) {
-                            found = true;
+
+                    const content =
+                        document.getElementById(
+                            tabId
+                        );
+
+
+                    const text =
+                        `${button.textContent}
+                        ${content.textContent}`
+                        .toLowerCase();
+
+
+                    const matches =
+                        text.includes(query);
+
+
+                    button.classList.toggle(
+                        'hidden',
+                        !matches
+                    );
+
+
+                    if (matches) {
+
+                        found = true;
+
+                    }
+
+                }
+            );
+
+
+            if (found) {
+
+                showStatus(
+                    'Conteúdos encontrados. Selecione uma aba destacada.'
+                );
+
+            } else {
+
+                showStatus(
+                    'Nenhum conteúdo encontrado para essa pesquisa.'
+                );
+
+            }
+
+        }
+    );
+
+
+    /* ============================= */
+    /* QUIZ DA FIBRA ÓPTICA */
+    /* ============================= */
+
+    function answerFiberQuiz(
+        button,
+        correct
+    ) {
+
+        const result =
+            document.getElementById(
+                'fiberQuizResult'
+            );
+
+
+        const options =
+            document.querySelectorAll(
+                '#tab-fibra .quiz-option'
+            );
+
+
+        options.forEach(option => {
+
+            option.disabled = true;
+
+            option.style.cursor =
+                'default';
+
+        });
+
+
+        if (correct) {
+
+            button.style.background =
+                '#d1e7dd';
+
+            button.style.borderColor =
+                '#198754';
+
+            result.textContent =
+                '✅ Correto! A reflexão interna total mantém a luz confinada no núcleo da fibra.';
+
+            result.style.color =
+                '#198754';
+
+        } else {
+
+            button.style.background =
+                '#f8d7da';
+
+            button.style.borderColor =
+                '#dc3545';
+
+            result.textContent =
+                '❌ Resposta incorreta. O fenômeno responsável é a reflexão interna total.';
+
+            result.style.color =
+                '#dc3545';
+
+        }
+
+    }
+
+
+    /* ============================= */
+    /* ATALHOS */
+    /* ============================= */
+
+    document.addEventListener(
+        'keydown',
+        event => {
+
+            if (event.key === 'Escape') {
+
+                searchInput.value = '';
+
+                searchInput.dispatchEvent(
+                    new Event('input')
+                );
+
+                searchInput.blur();
+
+            }
+
+
+            if (
+                event.ctrlKey &&
+                event.key.toLowerCase() === 'k'
+            ) {
+
+                event.preventDefault();
+
+                searchInput.focus();
+
+            }
+
+        }
+    );
+
+
+    /* ============================= */
+    /* CARREGAMENTO */
+    /* ============================= */
+
+    window.addEventListener(
+        'load',
+        () => {
+
+            loadTheme();
+
+            updateProgress();
+
+
+            if (window.MathJax) {
+
+                MathJax.typesetPromise();
+
+            }
+
+        }
+    );
+
+
+    window.addEventListener(
+        'resize',
+        updateProgress
+    );
+
+
+    /* ============================= */
+    /* VERIFICAÇÃO DAS IMAGENS */
+    /* ============================= */
+
+    const images =
+        document.querySelectorAll('img');
+
+
+    images.forEach(image => {
+
+        image.addEventListener(
+            'error',
+            () => {
+
+                image.alt =
+                    'Imagem não encontrada. Verifique o nome do arquivo.';
+
+                image.style.minHeight =
+                    '120px';
+
+                image.style.background =
+                    '#eee';
+
+            }
+        );
+
+    });
+
+
+    /* ============================= */
+    /* ANIMAÇÃO DOS CARDS */
+    /* ============================= */
+
+    const observer =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(
+                    entry => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.style.opacity =
+                                '1';
+
                         }
 
                     }
                 );
 
-                if (found) {
-
-                    showStatus(
-                        'Conteúdos encontrados. Selecione uma aba destacada.'
-                    );
-
-                } else {
-
-                    showStatus(
-                        'Nenhum conteúdo encontrado para essa pesquisa.'
-                    );
-
-                }
-
+            },
+            {
+                threshold: 0.15
             }
         );
 
 
-        /* ============================= */
-        /* QUIZ DA FIBRA ÓPTICA */
-        /* ============================= */
+    document
+        .querySelectorAll(
+            '.info-box, .callout'
+        )
+        .forEach(element => {
 
-        function answerFiberQuiz(
-            button,
-            correct
-        ) {
+            element.style.opacity =
+                '0.7';
 
-            const result =
-                document.getElementById(
-                    'fiberQuizResult'
-                );
+            observer.observe(element);
 
-            const options =
-                document.querySelectorAll(
-                    '#tab-fibra .quiz-option'
-                );
-
-            options.forEach(option => {
-
-                option.disabled = true;
-
-                option.style.cursor =
-                    'default';
-
-            });
-
-            if (correct) {
-
-                button.style.background =
-                    '#d1e7dd';
-
-                button.style.borderColor =
-                    '#198754';
-
-                result.textContent =
-                    '✅ Correto! A reflexão interna total mantém a luz confinada no núcleo da fibra.';
-
-                result.style.color =
-                    '#198754';
-
-            } else {
-
-                button.style.background =
-                    '#f8d7da';
-
-                button.style.borderColor =
-                    '#dc3545';
-
-                result.textContent =
-                    '❌ Resposta incorreta. O fenômeno responsável é a reflexão interna total.';
-
-                result.style.color =
-                    '#dc3545';
-
-            }
-
-        }
+        });
 
 
-        /* ============================= */
-        /* ATALHOS DO TECLADO */
-        /* ============================= */
+    /* ============================= */
+    /* VERIFICAÇÃO DOS VÍDEOS */
+    /* ============================= */
 
-        document.addEventListener(
-            'keydown',
-            event => {
-
-                if (event.key === 'Escape') {
-
-                    searchInput.value = '';
-
-                    searchInput.dispatchEvent(
-                        new Event('input')
-                    );
-
-                    searchInput.blur();
-
-                }
-
-                if (
-                    event.ctrlKey &&
-                    event.key.toLowerCase() === 'k'
-                ) {
-
-                    event.preventDefault();
-
-                    searchInput.focus();
-
-                }
-
-            }
-        );
+    const videos =
+        document.querySelectorAll('video');
 
 
-        /* ============================= */
-        /* CARREGAMENTO */
-        /* ============================= */
+    videos.forEach(video => {
 
-        window.addEventListener(
-            'load',
+        video.addEventListener(
+            'error',
             () => {
 
-                loadTheme();
-
-                updateProgress();
-
-                if (window.MathJax) {
-
-                    MathJax.typesetPromise();
-
-                }
+                console.warn(
+                    'Não foi possível carregar o vídeo:',
+                    video.querySelector('source')?.src
+                );
 
             }
         );
 
-
-        window.addEventListener(
-            'resize',
-            updateProgress
-        );
+    });
 
 
-        /* ============================= */
-        /* IMAGENS */
-        /* ============================= */
+    updateProgress();
 
-        const images =
-            document.querySelectorAll('img');
-
-        images.forEach(image => {
-
-            image.addEventListener(
-                'error',
-                () => {
-
-                    image.alt =
-                        'Imagem não encontrada. Verifique o nome do arquivo.';
-
-                    image.style.minHeight =
-                        '120px';
-
-                    image.style.background =
-                        '#eee';
-
-                }
-            );
-
-        });
-
-
-        /* ============================= */
-        /* ANIMAÇÃO DOS CARDS */
-        /* ============================= */
-
-        const observer =
-            new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(
-                        entry => {
-
-                            if (
-                                entry.isIntersecting
-                            ) {
-
-                                entry.target.style.opacity =
-                                    '1';
-
-                            }
-
-                        }
-                    );
-
-                },
-                {
-                    threshold: 0.15
-                }
-            );
-
-
-        document
-            .querySelectorAll(
-                '.info-box, .callout'
-            )
-            .forEach(element => {
-
-                element.style.opacity =
-                    '0.7';
-
-                observer.observe(element);
-
-            });
-
-
-        /* ============================= */
-        /* VERIFICAÇÃO DOS VÍDEOS */
-        /* ============================= */
-
-        const videos =
-            document.querySelectorAll('video');
-
-        videos.forEach(video => {
-
-            video.addEventListener(
-                'error',
-                () => {
-
-                    console.warn(
-                        'Não foi possível carregar o vídeo:',
-                        video.querySelector('source')?.src
-                    );
-
-                }
-            );
-
-        });
-
-
-        updateProgress();
-
-    </script>
+</script>
+```
 
 </body>
 </html>
